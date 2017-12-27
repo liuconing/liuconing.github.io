@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Node.js 的 30 天學習日記--第四天 | 前後端的學習日記與筆記</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Node.js 學習第四天第三第四天比較趕，所以文章有任何不順的地方多見諒，一樣麻煩了。  如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#112;&amp;#112;&amp;#x38;&amp;#x34;&amp;#x30;&amp;#52;&amp;#x30;&amp;#x35;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#108;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109; 提醒我錯誤。   Node.js 模組原理(下)">
+<meta name="keywords" content="學習日記">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 的 30 天學習日記--第四天">
+<meta property="og:url" content="http://yoursite.com/2017/12/27/Node-js-的-30-天學習日記-第四天/index.html">
+<meta property="og:site_name" content="前後端的學習日記與筆記">
+<meta property="og:description" content="Node.js 學習第四天第三第四天比較趕，所以文章有任何不順的地方多見諒，一樣麻煩了。  如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#112;&amp;#112;&amp;#x38;&amp;#x34;&amp;#x30;&amp;#52;&amp;#x30;&amp;#x35;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#108;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109; 提醒我錯誤。   Node.js 模組原理(下)">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2017-12-27T15:02:14.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js 的 30 天學習日記--第四天">
+<meta name="twitter:description" content="Node.js 學習第四天第三第四天比較趕，所以文章有任何不順的地方多見諒，一樣麻煩了。  如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#112;&amp;#112;&amp;#x38;&amp;#x34;&amp;#x30;&amp;#52;&amp;#x30;&amp;#x35;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#108;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109; 提醒我錯誤。   Node.js 模組原理(下)">
+<link rel="publisher" href="UA-111525900-1">
+  
+    <link rel="alternate" href="/atom.xml" title="前後端的學習日記與筆記" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">前後端的學習日記與筆記</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Node-js-的-30-天學習日記-第四天" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/27/Node-js-的-30-天學習日記-第四天/" class="article-date">
+  <time datetime="2017-12-27T14:24:56.000Z" itemprop="datePublished">2017-12-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Node.js 的 30 天學習日記--第四天
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Node-js-學習第四天"><a href="#Node-js-學習第四天" class="headerlink" title="Node.js 學習第四天"></a>Node.js 學習第四天</h3><p>第三第四天比較趕，所以文章有任何不順的地方多見諒，一樣麻煩了。</p>
+<blockquote>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#112;&#112;&#x38;&#x34;&#x30;&#52;&#x30;&#x35;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;">&#112;&#112;&#x38;&#x34;&#x30;&#52;&#x30;&#x35;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a> 提醒我錯誤。</p>
+</blockquote>
+<hr>
+<h3 id="Node-js-模組原理-下"><a href="#Node-js-模組原理-下" class="headerlink" title="Node.js 模組原理(下)"></a>Node.js 模組原理(下)</h3><hr>
+<h3 id="Node-js-核心模組-dirname、-filename"><a href="#Node-js-核心模組-dirname、-filename" class="headerlink" title="Node.js 核心模組 - dirname、 filename"></a>Node.js 核心模組 - <strong>dirname、 </strong>filename</h3><p><strong>dirname 是你這支 js 的資料夾路徑， </strong>filename 是這支 js 的路徑會顯示檔案名稱，這兩在設定路徑的時候就很好用在 js 裡面下兩個 <code>console.log</code> 用這兩個語法就可以看到這支的路徑。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(__dirname);</span><br><span class="line">console.log(__filename);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="Node-js-核心模組-Path"><a href="#Node-js-核心模組-Path" class="headerlink" title="Node.js 核心模組 - Path"></a>Node.js 核心模組 - Path</h3><p>這是 Node.js 的路徑模組，想處理這個檔案的路徑或名稱就很好去指定位置，如果我設定一個資料夾是這樣  <code>project/a/b/all.js</code> 把 all.js 放在 project 資料夾又放入 a 資料夾又放入 b 資料夾，接下來去載入 <strong>path</strong> 模組 <code>var path = require(&#39;path&#39;);</code>  ，如果想要看檔案的資料夾路徑就可以這樣寫<br><code>console.log(path.dirname(&#39;a/b/all.js&#39;))</code> ，它就會回傳給你這檔案的資料夾路徑，在來還有一個語法是 <code>path.join</code> 這像字串相加， <code>console.log(path.join(__dirname,&#39;/a&#39;))</code> 它就會把目前路徑加上 <em>/a</em> ，也可以抓擋名路徑或抓副檔名，在來可以分析路徑。</p>
+<pre><code>console.log(path.dirname(&apos;/xx/yy/zz.js&apos;)); 抓目錄路徑
+console.log(path.join(__dirname,&apos;/xx&apos;)); 路徑合併
+console.log(path.basename(&apos;/a/b/all.js&apos;)); 抓檔名
+console.log(path.exname(&apos;/a/b/all.js&apos;)); 抓副檔名
+console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
+</code></pre><p>可以去練習看每個 console 的結果出來。</p>
+<hr>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>終於把第三第四天寫完了，日後有時間會在去更新圖文更好了解，畢竟個人還在學習中，有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x70;&#x70;&#56;&#52;&#48;&#x34;&#x30;&#53;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#x70;&#x70;&#56;&#52;&#48;&#x34;&#x30;&#53;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a> 一起共同討論。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/27/Node-js-的-30-天學習日記-第四天/" data-id="cjbp6vxp40003tok3g9y7lsuo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/26/Node-js-的-30-天學習日記-第三天/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Node.js 的 30 天學習日記--第三天</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/27/Node-js-的-30-天學習日記-第四天/">Node.js 的 30 天學習日記--第四天</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/26/Node-js-的-30-天學習日記-第三天/">Node.js 的 30 天學習日記--第三天</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/25/Node-js-的-30-天學習日記-第二天/">Node.js 的 30 天學習日記--第二天</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/24/Node-js-的-30-天學習日記-第一天/">Node.js 的 30 天學習日記--第一天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/學習日記/" style="font-size: 10px;">學習日記</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

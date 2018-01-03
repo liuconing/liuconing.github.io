@@ -63,6 +63,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Node-js-的-30-天學習日記-第十一天" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/03/Node-js-的-30-天學習日記-第十一天/" class="article-date">
+  <time datetime="2018-01-02T16:04:10.000Z" itemprop="datePublished">2018-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/03/Node-js-的-30-天學習日記-第十一天/">Node.js 的 30 天學習日記--第十一天</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Node-js-學習第十一天"><a href="#Node-js-學習第十一天" class="headerlink" title="Node.js 學習第十一天"></a>Node.js 學習第十一天</h3><p>第十一天有看到幾家公司的求職條件要求都好高，對於我這個新鮮人來講實在是很難有優勢，只好繼續學多增加作品吧。</p>
+<blockquote>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x70;&#112;&#x38;&#52;&#48;&#52;&#x30;&#53;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x70;&#112;&#x38;&#52;&#48;&#52;&#x30;&#53;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;</a> 提醒我錯誤。</p>
+</blockquote>
+<hr>
+<h3 id="forEach、orderByChild-資料排序篇"><a href="#forEach、orderByChild-資料排序篇" class="headerlink" title="forEach、orderByChild - 資料排序篇"></a>forEach、orderByChild - 資料排序篇</h3><p>這資料排序的語法是 firbase 的，所以今天學的事如何把 firbase 資料庫裡面的資料由小到大。<br>orderByChild 的語法是選取要排序的子鍵，單獨使用是沒辦法排序要跟 forEach 使用來完成排序。<br>先看 firbase 的<a href="https://firebase.google.com/docs/database/admin/retrieve-data?hl=zh-cn#orderbychild" target="_blank" rel="noopener">排序規則</a><br>基本上規則是:</p>
+<ol>
+<li>子鍵值 null</li>
+<li>子鍵值 false</li>
+<li>子鍵值 true</li>
+<li>子鍵值是數值由小到大</li>
+<li>子鍵值是字串由 A 到 Z</li>
+<li>物件定義<br>以上規則都是由上到下排列</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">// 排序weight的資料由小到大</span><br><span class="line">//宣告物件</span><br><span class="line">   var people = &#123;</span><br><span class="line">       &quot;mike&quot;: &#123;</span><br><span class="line">         &quot;height&quot; : 4,</span><br><span class="line">         &quot;length&quot; : 12.5,</span><br><span class="line">         &quot;weight&quot;: 5000</span><br><span class="line">       &#125;,</span><br><span class="line">       &quot;casper&quot;: &#123;</span><br><span class="line">         &quot;height&quot; : 3,</span><br><span class="line">         &quot;length&quot; : 9,</span><br><span class="line">         &quot;weight&quot; : 2500</span><br><span class="line">       &#125;,</span><br><span class="line">       &quot;bob&quot;: &#123;</span><br><span class="line">         &quot;height&quot;: &quot;dalse&quot;,</span><br><span class="line">         &quot;length&quot; : false,</span><br><span class="line">         &quot;weight&quot; : 2500</span><br><span class="line">       &#125;,</span><br><span class="line">       &quot;john&quot;: &#123;</span><br><span class="line">         &quot;height&quot; : true,</span><br><span class="line">         &quot;length&quot; : 9,</span><br><span class="line">         &quot;weight&quot; : 2500</span><br><span class="line">       &#125;</span><br><span class="line">       ,</span><br><span class="line">       &quot;josh&quot;: &#123;</span><br><span class="line">         &quot;height&quot; : false,</span><br><span class="line">         &quot;length&quot; : 9,</span><br><span class="line">         &quot;weight&quot; : 2500</span><br><span class="line">       &#125;,</span><br><span class="line">       &apos;boss&apos;:&#123;</span><br><span class="line">         &quot;length&quot;: 3</span><br><span class="line">       &#125;,</span><br><span class="line">       &apos;frank&apos;:&#123;</span><br><span class="line">         height:&#123;&apos;aaa&apos;:1&#125;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;;</span><br><span class="line">   //選取並新增people目錄並新增people物件資料</span><br><span class="line">   firebase.database().ref(&apos;people&apos;).set(people);</span><br><span class="line">   //宣告變數指定people子目錄</span><br><span class="line">   var peopleRef = firebase.database().ref(&apos;people&apos;);</span><br><span class="line">   // 路徑&gt;&gt;排序(&apos;屬性&apos;)&gt;&gt;讀取&gt; forEach 依序撈出資料</span><br><span class="line">   peopleRef.orderByChild(&apos;height&apos;).once(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">       snapshot.forEach(function(item)&#123;</span><br><span class="line">           console.log(item.val());</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次排序規則對於要處理或顯示資料做排列的網站很有用，有需要的話可以去查詢 JavaScript 的排序如何做使用。<br>有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#112;&#112;&#x38;&#52;&#48;&#x34;&#x30;&#x35;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#112;&#112;&#x38;&#52;&#48;&#x34;&#x30;&#x35;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/03/Node-js-的-30-天學習日記-第十一天/" data-id="cjbz7bp1b0008jck37nkvyod7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Node-js-的-30-天學習日記-第十天" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/02/Node-js-的-30-天學習日記-第十天/" class="article-date">
@@ -87,16 +142,16 @@
       
         <h3 id="Node-js-學習第十天"><a href="#Node-js-學習第十天" class="headerlink" title="Node.js 學習第十天"></a>Node.js 學習第十天</h3><p>今天第十天來學上次剩下的。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#112;&#112;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#109;">&#112;&#112;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#112;&#x70;&#x38;&#x34;&#48;&#52;&#48;&#x35;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#112;&#x70;&#x38;&#x34;&#48;&#52;&#48;&#x35;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="todolist-下"><a href="#todolist-下" class="headerlink" title="todolist (下)"></a>todolist (下)</h3><p>上一次講的事如何新增內容與顯示 darabase 的實際應用，這是學的是如何做刪除動作，新增一個刪除的邏輯與 dataset 方式。<br><a href="https://pjchender.blogspot.tw/2017/01/html-5-data-attribute.html" target="_blank" rel="noopener">HTNL的dataset</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 拉出資料庫內容並渲染到網頁上</span><br><span class="line">    todos.on(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">      var str =&apos;&apos;;</span><br><span class="line">      var data = snapshot.val();</span><br><span class="line">      for(var item in data)&#123;</span><br><span class="line">        //新增一筆dataset的資料在li上面</span><br><span class="line">        str +=&apos;&lt;li data-key=&quot;&apos;+[item]+&apos;&quot;&gt;&apos;+data[item].content+&apos;&lt;/li&gt;&apos;;</span><br><span class="line">      &#125;</span><br><span class="line">      list.innerHTML = str ;</span><br><span class="line">    &#125;)</span><br><span class="line">    //刪除邏輯</span><br><span class="line">    //選取要刪除的dom元素事件</span><br><span class="line">    list.addEventListener(&apos;click&apos;,function(e)&#123;</span><br><span class="line">      //如果點選的地方等於li元素執行內容</span><br><span class="line">      if(e.target.nodeName = &quot;LI&quot;)&#123;</span><br><span class="line">        //宣告變數點選位置的dataset值</span><br><span class="line">        var key = e.target.dataset.key;</span><br><span class="line">        //子目錄指定key並刪除子目錄下的內容</span><br><span class="line">        todos.child(key).remove();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>基本上 database 的新增刪除讀取應用就這樣看大家玩出什麼樣的應用，有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#112;&#112;&#x38;&#x34;&#x30;&#x34;&#x30;&#x35;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#112;&#112;&#x38;&#x34;&#x30;&#x34;&#x30;&#x35;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>基本上 database 的新增刪除讀取應用就這樣看大家玩出什麼樣的應用，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#112;&#x70;&#56;&#52;&#x30;&#52;&#48;&#x35;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#112;&#x70;&#56;&#52;&#x30;&#52;&#48;&#x35;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/02/Node-js-的-30-天學習日記-第十天/" data-id="cjbxtanf5000d9gk3340jq9d8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/02/Node-js-的-30-天學習日記-第十天/" data-id="cjbz7bp2r000mjck39lyv97v3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -132,18 +187,18 @@
       
         <h3 id="Node-js-學習第九天"><a href="#Node-js-學習第九天" class="headerlink" title="Node.js 學習第九天"></a>Node.js 學習第九天</h3><p>2018 年的第一天，一樣再學習不過玩太瘋所以這次日記內容大概一段落吧(?</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#x70;&#x70;&#x38;&#x34;&#48;&#52;&#48;&#x35;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;">&#x70;&#x70;&#x38;&#x34;&#48;&#52;&#48;&#x35;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#112;&#112;&#x38;&#52;&#x30;&#x34;&#x30;&#x35;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;">&#112;&#112;&#x38;&#52;&#x30;&#x34;&#x30;&#x35;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="todolist-上"><a href="#todolist-上" class="headerlink" title="todolist (上)"></a>todolist (上)</h3><p>使用之前學的新增與抓資料庫的方法，首先建立一個 html 裡面就載入 Firbase 資料然後按照下面範例去執行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  //建立輸入欄位與按鈕</span><br><span class="line">  &lt;input type=&quot;text&quot; id=&quot;txt&quot; placeholder=&quot;請輸入內容....&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;button&quot; id=&quot;send&quot; value=&quot;送出&quot;&gt;</span><br><span class="line">  //只建立 ul 之後要放入 li 內容</span><br><span class="line">  &lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">  &lt;script src=&quot;https://www.gstatic.com/firebasejs/4.8.1/firebase.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    // Initialize Firebase</span><br><span class="line">    var config = &#123;</span><br><span class="line">      apiKey: &quot;AIzaSyBGF1qu8w1tgKFYCCmrLXVSNe_6_Mam4iU&quot;,</span><br><span class="line">      authDomain: &quot;demoindex-de647.firebaseapp.com&quot;,</span><br><span class="line">      databaseURL: &quot;https://demoindex-de647.firebaseio.com&quot;,</span><br><span class="line">      projectId: &quot;demoindex-de647&quot;,</span><br><span class="line">      storageBucket: &quot;demoindex-de647.appspot.com&quot;,</span><br><span class="line">      messagingSenderId: &quot;1022331239034&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">    firebase.initializeApp(config);</span><br><span class="line">    //操縱 dom 元素</span><br><span class="line">    var txt = document.getElementById(&apos;txt&apos;);</span><br><span class="line">    var send = document.getElementById(&apos;send&apos;);</span><br><span class="line">    var list = document.getElementById(&apos;list&apos;);</span><br><span class="line">    // 建立 todos 資料</span><br><span class="line">    var todos = firebase.database().ref(&apos;todos&apos;);</span><br><span class="line">    // 寫入資料庫</span><br><span class="line">    send.addEventListener(&apos;click&apos;,function(e)&#123;</span><br><span class="line">      todos.push(&#123;content : txt.value&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    // 拉出資料庫內容並渲染到網頁上</span><br><span class="line">    todos.on(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">      var str =&apos;&apos;;</span><br><span class="line">      var data = snapshot.val();</span><br><span class="line">      for(var item in data)&#123;</span><br><span class="line">        str +=&apos;&lt;li&gt;&apos;+data[item].content+&apos;&lt;/li&gt;&apos;;</span><br><span class="line">      &#125;</span><br><span class="line">      list.innerHTML = str ;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://i.imgur.com/OJq5sjn.jpg" alt="展示"></p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次只會講如何新增，下一次就講如何做刪除的動作，跨年玩太瘋所以才學習這麼少，明天大概就會穩定了，有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#112;&#x70;&#x38;&#x34;&#48;&#52;&#48;&#53;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#112;&#x70;&#x38;&#x34;&#48;&#52;&#48;&#53;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次只會講如何新增，下一次就講如何做刪除的動作，跨年玩太瘋所以才學習這麼少，明天大概就會穩定了，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x70;&#x70;&#x38;&#52;&#x30;&#52;&#x30;&#x35;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x70;&#x70;&#x38;&#52;&#x30;&#52;&#x30;&#x35;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/01/Node-js-的-30-天學習日記-第九天/" data-id="cjbxtaner00019gk3cv3w4m0p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/01/Node-js-的-30-天學習日記-第九天/" data-id="cjbz7bp150004jck3qtztq3as" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -179,19 +234,19 @@
       
         <h3 id="Node-js-學習第八天"><a href="#Node-js-學習第八天" class="headerlink" title="Node.js 學習第八天"></a>Node.js 學習第八天</h3><p>晚上出門跨年，出門前也來學習一下不過應該學不多，看我看到哪裡這篇筆記就寫到哪裡囉，有可能只有短短的幾行文字。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#112;&#112;&#x38;&#x34;&#48;&#x34;&#x30;&#x35;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#112;&#112;&#x38;&#x34;&#48;&#x34;&#x30;&#x35;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#x70;&#x70;&#56;&#x34;&#x30;&#x34;&#48;&#x35;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#x70;&#x70;&#56;&#x34;&#x30;&#x34;&#48;&#x35;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="remove、child-移除資料"><a href="#remove、child-移除資料" class="headerlink" title="remove、child - 移除資料"></a>remove、child - 移除資料</h3><p>child 是子路徑用法，再 ref 裡面寫路徑跟 child 寫路徑效果是一樣 。<br><code>firebase.database().ref(&#39;myname).remove();</code><br><code>firebase.database().ref().child(&#39;myname&#39;).remove();</code></p>
 <hr>
 <h3 id="在網頁即時看到-Firbase-資料庫資料"><a href="#在網頁即時看到-Firbase-資料庫資料" class="headerlink" title="在網頁即時看到 Firbase 資料庫資料"></a>在網頁即時看到 Firbase 資料庫資料</h3><p>看範例圖並做一遍，也不一定要抓根目錄以下所有的資料，可以指向子目錄抓取單一。<br><img src="https://i.imgur.com/Cu3b4Nv.jpg" alt="範例"></p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>要跟朋友去跨年所以才記錄兩個小段落，隔天在一口氣把 todolist 學完吧。<br>有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x70;&#x70;&#56;&#52;&#x30;&#x34;&#48;&#x35;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x70;&#x70;&#56;&#52;&#x30;&#x34;&#48;&#x35;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>要跟朋友去跨年所以才記錄兩個小段落，隔天在一口氣把 todolist 學完吧。<br>有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#112;&#x70;&#56;&#52;&#x30;&#x34;&#x30;&#53;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#112;&#x70;&#56;&#52;&#x30;&#x34;&#x30;&#53;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/31/Node-js-的-30-天學習日記-第八天/" data-id="cjbxtanf3000a9gk3h3860vv5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/31/Node-js-的-30-天學習日記-第八天/" data-id="cjbz7bp2m000jjck3ajnu6x9c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -227,7 +282,7 @@
       
         <h3 id="Node-js-學習第七天"><a href="#Node-js-學習第七天" class="headerlink" title="Node.js 學習第七天"></a>Node.js 學習第七天</h3><p>痾<del>~</del>已經 30 號了再過一天就 31 號年底準備跨年拉，想到畢業後過了半年還沒找到工作真是不爽，只能繼續投履歷繼續找阿，不過先去朋友快樂的跨年再說囉！！</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#112;&#112;&#56;&#52;&#x30;&#52;&#48;&#x35;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#112;&#112;&#56;&#52;&#x30;&#52;&#48;&#x35;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#112;&#x70;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#112;&#x70;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="once-顯示資料到網頁"><a href="#once-顯示資料到網頁" class="headerlink" title="once - 顯示資料到網頁"></a>once - 顯示資料到網頁</h3><p>once 這語法是只讀取資料庫的資料一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//把資料寫入資料庫</span><br><span class="line">firebase.database().ref(&apos;myname&apos;).set(&apos;mark&apos;);</span><br><span class="line">//宣告一個變數指定位子</span><br><span class="line">var myName = firebase.database().ref(&apos;myname&apos;);</span><br><span class="line">//once 只讀取資料庫的資料一次 on 隨時監聽</span><br><span class="line">//once 裡面的函式像快照把資料記錄一次名稱自訂</span><br><span class="line">myName.once(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">  document.getElementById(&apos;title&apos;).textContent = snapshot.val();</span><br><span class="line">  console.log(snapshot.val());</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
@@ -235,12 +290,12 @@
 <p>如果要使用 on 的語法就把 once 改成 on ，on 就把資料庫更新資料時可以即時監聽。</p>
 <p>還有一種新增資了方法就是 push ， push 跟 set 的差別在於 firebase 把 push 新增的物件資料會多加一組 key 值並且只能新增物件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firebase.database().ref(&apos;push顯示&apos;).push(&#123;content:&apos;你好嗎?&apos;&#125;);</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://images2.imgbox.com/8c/02/oqk6kYy1_o.jpg" alt="結果"></p>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天講的就是新增資料的方法，明天 31 號會講移除的方法不過應該會很短，要跟朋友去跨年阿。<br>有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#112;&#x70;&#x38;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#111;&#109;">&#112;&#x70;&#x38;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#111;&#109;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天講的就是新增資料的方法，明天 31 號會講移除的方法不過應該會很短，要跟朋友去跨年阿。<br>有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#112;&#x70;&#56;&#x34;&#48;&#x34;&#x30;&#53;&#x40;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#112;&#x70;&#56;&#x34;&#48;&#x34;&#x30;&#53;&#x40;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/30/Node-js-的-30-天學習日記-第七天/" data-id="cjbxtanex00049gk3r4zbd2mf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/30/Node-js-的-30-天學習日記-第七天/" data-id="cjbz7bp130003jck3dzigbgrg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -276,7 +331,7 @@
       
         <h3 id="Node-js-學習第六天"><a href="#Node-js-學習第六天" class="headerlink" title="Node.js 學習第六天"></a>Node.js 學習第六天</h3><p>前置作業都弄得差不多了，就要開始製作一個小型專案，這次要邊做邊學的專案是 整合todolist ，這次花費的天數會比較常就每一個小段落邊看變邊詢 GOOGLE 邊做。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#112;&#112;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;">&#112;&#112;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#112;&#x70;&#x38;&#52;&#48;&#52;&#48;&#x35;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;">&#112;&#x70;&#x38;&#52;&#48;&#52;&#48;&#x35;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="Firebase-服務"><a href="#Firebase-服務" class="headerlink" title="Firebase 服務"></a>Firebase 服務</h3><p><a href="https://firebase.google.com/" target="_blank" rel="noopener">Firebase</a> 是可以使用 js 去操控的服務還有這服務免費給的版本條件很不錯，所以這邊個人建議使用 Firebase的服務，這邊對於 Firebase 服務就不多做解說了基本註冊與新增專案就請上網搜尋。</p>
@@ -289,12 +344,12 @@
 <p>再來如何使用這兩種語法， set 語法可以設定字串或物件進去，每次寫入都會覆蓋原本的資料。<br>set 只能帶入物件格式不能帶入陣列格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ref() 尋找資料庫路徑</span><br><span class="line">set() 新增資料庫</span><br><span class="line">firebase.database().ref().set(&apos;hi&apos;) 沒設定路徑的話會從根目錄開始</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">firebase.database().ref().set(&#123;</span><br><span class="line">    studen1:&#123;</span><br><span class="line">        name:&apos;Tom&apos;,</span><br><span class="line">        num:&apos;1&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    studen2:&#123;</span><br><span class="line">        name:&apos;John&apos;,</span><br><span class="line">        num:&apos;2&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);  代入物件格式</span><br><span class="line">ref(studen1/num);  指向 num 的路徑</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/lYxMQkB.jpg" alt="物件格式"></p>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>嗯……….沒啥好說，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#48;&#x35;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#48;&#x35;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>嗯……….沒啥好說，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#112;&#112;&#56;&#x34;&#48;&#52;&#x30;&#53;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#112;&#112;&#56;&#x34;&#48;&#52;&#x30;&#53;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/29/Node-js-的-30-天學習日記-第六天/" data-id="cjbxtanf6000f9gk3soe04s4h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/29/Node-js-的-30-天學習日記-第六天/" data-id="cjbz7bp1d000ajck3vlr3qzkf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -330,7 +385,7 @@
       
         <h3 id="Node-js-學習第五天"><a href="#Node-js-學習第五天" class="headerlink" title="Node.js 學習第五天"></a>Node.js 學習第五天</h3><p>上一個小章節學完了，接下來要學下一段就要先準備事前作業囉，讓我們繼續邊看邊學。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#112;&#x70;&#x38;&#52;&#x30;&#52;&#x30;&#x35;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#112;&#x70;&#x38;&#52;&#x30;&#52;&#x30;&#x35;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x70;&#x70;&#x38;&#52;&#48;&#52;&#x30;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x70;&#x70;&#x38;&#52;&#48;&#52;&#x30;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><p>什麼事 npm 呢？ <a href="https://www.npmjs.com/" target="_blank" rel="noopener">NPM 官方網站</a> <a href="https://zh.wikipedia.org/wiki/Npm" target="_blank" rel="noopener">NPM WIKI</a><br>就是給一群使用 Node.js 開發的使用者發佈自己開發的模組， NPM 有許多非常好用的模組可以到 NPM 的官網去了解有哪些模組。</p>
@@ -354,12 +409,12 @@
 <p><code>npm install</code> 如果你安裝的模組不小心遺失或刪除，你 package.json 檔裡面的 dependencies 有記錄的話，輸入這段就會把你所有缺失的模組全部安裝回來。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--save 加上這段會複寫 package.json 檔案</span><br><span class="line">--save-dev 加上後面這段是測試用 會安裝測試用輔助工具</span><br><span class="line">-g 是安裝在全域 全域會在  C:\users[使用者名稱]\AppData\Roming\npm 這個資料夾內</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>NPM 是個非常好用的管理器，裡面有許多開發者創建的模組，各式各樣都有寫爬蟲、APP、資料庫、應用程式，都有一堆人建立並使用，十分建議好好了解 NPM 的詳細內容，有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#112;&#112;&#56;&#x34;&#x30;&#52;&#x30;&#53;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#112;&#112;&#56;&#x34;&#x30;&#52;&#x30;&#53;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>NPM 是個非常好用的管理器，裡面有許多開發者創建的模組，各式各樣都有寫爬蟲、APP、資料庫、應用程式，都有一堆人建立並使用，十分建議好好了解 NPM 的詳細內容，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#112;&#112;&#x38;&#52;&#48;&#x34;&#48;&#x35;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;">&#112;&#112;&#x38;&#52;&#48;&#x34;&#48;&#x35;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/28/Node-js-的-30-天學習日記-第五天/" data-id="cjbxtanf100089gk3fhzkzhma" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/28/Node-js-的-30-天學習日記-第五天/" data-id="cjbz7bp1f000djck3a1u2jxav" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -395,7 +450,7 @@
       
         <h3 id="Node-js-學習第四天"><a href="#Node-js-學習第四天" class="headerlink" title="Node.js 學習第四天"></a>Node.js 學習第四天</h3><p>第三第四天比較趕，所以文章有任何不順的地方多見諒，一樣麻煩了。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#112;&#112;&#x38;&#52;&#48;&#x34;&#48;&#53;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#112;&#112;&#x38;&#52;&#48;&#x34;&#48;&#53;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x70;&#x70;&#x38;&#52;&#x30;&#52;&#48;&#53;&#64;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#x70;&#x70;&#x38;&#52;&#x30;&#52;&#48;&#53;&#64;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="Node-js-模組原理-下"><a href="#Node-js-模組原理-下" class="headerlink" title="Node.js 模組原理(下)"></a>Node.js 模組原理(下)</h3><hr>
@@ -409,12 +464,12 @@ console.log(path.exname(&apos;/a/b/all.js&apos;)); 抓副檔名
 console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
 </code></pre><p>可以去練習看每個 console 的結果出來。</p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>終於把第三第四天寫完了，日後有時間會在去更新圖文更好了解，畢竟個人還在學習中，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#58;&#112;&#x70;&#56;&#x34;&#x30;&#52;&#48;&#53;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#112;&#x70;&#56;&#x34;&#x30;&#52;&#48;&#53;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>終於把第三第四天寫完了，日後有時間會在去更新圖文更好了解，畢竟個人還在學習中，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x70;&#112;&#x38;&#x34;&#x30;&#x34;&#x30;&#53;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#x70;&#112;&#x38;&#x34;&#x30;&#x34;&#x30;&#53;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/27/Node-js-的-30-天學習日記-第四天/" data-id="cjbxtanfn000l9gk3vo7lp0xb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/27/Node-js-的-30-天學習日記-第四天/" data-id="cjbz7bp2o000kjck3h3q049g4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -450,7 +505,7 @@ console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
       
         <h3 id="Node-js-學習第三天"><a href="#Node-js-學習第三天" class="headerlink" title="Node.js 學習第三天"></a>Node.js 學習第三天</h3><p>今天比較忙一點，所以第三第四天一起發出來，希望自己潛意識生出偷懶不寫的想法，或者拖延後發覺太晚就放棄。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x70;&#x70;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x70;&#x70;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="Node-js-模組原理-中"><a href="#Node-js-模組原理-中" class="headerlink" title="Node.js 模組原理(中)"></a>Node.js 模組原理(中)</h3><hr>
@@ -458,12 +513,12 @@ console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
 <p>匿名函式裡面帶入第一個值不限定，第二個會叫 <code>response</code> ， <code>request</code> 是當使用者連接到網站就會讀取網站的相關詳細資料， <code>response</code> 就是收到資料後要回傳給它的資料，第一行語法的第一個帶入 <em>200</em> 這是代表你資料回傳成功，第二個帶入一個物件 <code>&quot;Content-Type&quot;:&quot;text/plain&quot;</code> 這是代表我要回傳文字格式給它，第二行是要回傳什麼樣的內容給它，第三行要寫結束代表結束這次的回傳，最後要開啟一個埠就是本機端的 <em>8080</em> ，結束後在自己的 CMD 輸入<code>node 檔案名.js</code> ，開啟一個瀏覽器輸入 <code>127.0.0.1:8080</code> 或 <code>localhost:8080</code> 兩個都可以去檢查看有沒有回傳正確，基本上在 CMD 那邊就會說程式碼是否有錯誤。可以在回傳什麼格式那邊改成 <code>text/html</code> 就可以回傳 <code>&lt;h1&gt;hello!!&lt;/h1&gt;</code>。<br><img src="https://i.imgur.com/AQgjEp2.jpg" alt="六角學院擁有"></p>
 <p><a href="https://zh.wikipedia.org/wiki/%E9%80%9A%E8%A8%8A%E5%9F%A0" target="_blank" rel="noopener">通訊埠</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/localhost 是自己主機端 </span><br><span class="line">21 FTP</span><br><span class="line">80 HTTP</span><br><span class="line">3389 遠端桌面</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次需要的知識就比較需要比較廣，可以要去多看 Node.js API 文件，有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#112;&#112;&#56;&#x34;&#48;&#x34;&#48;&#53;&#64;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#112;&#112;&#56;&#x34;&#48;&#x34;&#48;&#53;&#64;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次需要的知識就比較需要比較廣，可以要去多看 Node.js API 文件，有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#112;&#112;&#56;&#52;&#48;&#52;&#x30;&#53;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#112;&#112;&#56;&#52;&#48;&#52;&#x30;&#53;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/26/Node-js-的-30-天學習日記-第三天/" data-id="cjbxtaney00059gk3qoyuozvc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/26/Node-js-的-30-天學習日記-第三天/" data-id="cjbz7bp0z0001jck3u4bjsau0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -499,7 +554,7 @@ console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
       
         <h3 id="Node-js-學習第二天"><a href="#Node-js-學習第二天" class="headerlink" title="Node.js 學習第二天"></a>Node.js 學習第二天</h3><p>開始第二天的學習，給自己訂下目標後就會感覺有東西在監督你，如果自己放鬆的話就認為別人對於自己什麼都做不好的想法讓我有東西去寫下去，怕自己一事無成的過日子，剛第二天在心中也有出現有好像什麼事情沒有去學一樣，這感覺跟在學校有點不太一樣阿。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#x30;&#53;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#x30;&#53;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x70;&#112;&#56;&#x34;&#48;&#x34;&#48;&#53;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#x70;&#112;&#56;&#x34;&#48;&#x34;&#48;&#53;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="Node-js-模組原理-上"><a href="#Node-js-模組原理-上" class="headerlink" title="Node.js 模組原理(上)"></a>Node.js 模組原理(上)</h3><hr>
@@ -511,68 +566,12 @@ console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
 <p>那我們該如何把 <strong>b.js</strong> 檔案裡面資料丟到 <strong>a.js</strong> 檔案裡面並做執行呢，我們就需要用到<strong>載入模組、傳送模組</strong>的概念，載入你需的模組與傳送你需要的模組。<br>該如何載入模組呢，首先我們需要宣告一個變數並下這段程式碼 <code>var content = require(&#39;./b&#39;);</code>  <strong>./</strong> 是同層的資料  <strong>../</strong> 是上一層的資料，當你在去執行 <strong>a.js</strong> 他會回傳給你 <strong>a</strong> 值與 <strong>{ }</strong> 空物件，為什麼會是空物件呢，就要說到我們的<strong>模組</strong>概念， Node.js 是由多個模組所組成並去執行，所以我們這段語法就是去載入模組，那我們載入模組的資料該如何變成模組呢，那我們就需要在 <strong>b.js</strong> 裡面這樣打 <code>module.exports = b;</code> 這樣我們就把宣告的變數傳到 <code>module</code> 這個空物件模組裡面並給有下 <code>require</code> 的檔案去載入， <code>module.exports</code> 本身也可以去寫入物件、陣列資料或函式，也可以單獨寫 <code>exports.b = &#39;2&#39;</code> 那去執行時後它就會回傳給你 <code>{ b:&#39;2&#39;}</code> ， <code>exports</code> 就是給空物件裡面加入任何值所需要的語法。</p>
 <p>如果你在 js 檔案裡面同時使用這兩種方式寫的話，那檔案本身只會讀取你寫 <strong><code>module.exports</code></strong> 語法的資料，所以個人建議使用第一種方式去寫你要傳送的物件模組。</p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天開始講解並記錄 Node.js 的模組原理，比起第一天需要去把所學到並理解的東西用更簡單的方法給其他人了解要來得難很多，但這對於我學習上有更深入的了解，加深所學印象，有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#x70;&#x70;&#x38;&#x34;&#x30;&#52;&#48;&#x35;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#x70;&#x70;&#x38;&#x34;&#x30;&#52;&#48;&#x35;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天開始講解並記錄 Node.js 的模組原理，比起第一天需要去把所學到並理解的東西用更簡單的方法給其他人了解要來得難很多，但這對於我學習上有更深入的了解，加深所學印象，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#112;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#112;&#112;&#56;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/25/Node-js-的-30-天學習日記-第二天/" data-id="cjbxtanev00039gk3h75gjzkr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Node-js-的-30-天學習日記-第一天" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/24/Node-js-的-30-天學習日記-第一天/" class="article-date">
-  <time datetime="2017-12-23T17:40:59.000Z" itemprop="datePublished">2017-12-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/24/Node-js-的-30-天學習日記-第一天/">Node.js 的 30 天學習日記--第一天</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>為什麼我要寫這篇學習日記呢，在聽過一些人的建議是說嘗試自己是否能夠堅持不斷學習，所以我來寫這篇 Node.js 的 30 天日記，今天是我的第一天，在邊看 <a href="http://www.hexschool.com/courses/" target="_blank" rel="noopener">六角學院</a> 的課程中邊學習邊寫筆記與日記，希望我能夠堅持下去。</p>
-<blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#112;&#x70;&#56;&#x34;&#x30;&#x34;&#48;&#x35;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;">&#112;&#x70;&#56;&#x34;&#x30;&#x34;&#48;&#x35;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;</a> 提醒我錯誤。</p>
-</blockquote>
-<hr>
-<h3 id="Node-js-學習第一天"><a href="#Node-js-學習第一天" class="headerlink" title="Node.js 學習第一天"></a>Node.js 學習第一天</h3><p>在剛開始接觸 Node.js 之前，我就有去學習前端金三角 HTML、CSS、JavaScript 雖然不是說很精通，但大致上可以按照簡單的設計版面來去寫 Code 完成一個靜態式網頁了，所以現在來去接觸後端就是這個 Node.js 看能不能獨自寫出一些常見的網站類型。</p>
-<p>這第一天我打算寫如何做 Node.js 環境設定，如果已經安裝好的人可以等待我下一篇文章。</p>
-<hr>
-<h3 id="如何安裝-Node-js-環境"><a href="#如何安裝-Node-js-環境" class="headerlink" title="如何安裝 Node.js 環境"></a>如何安裝 Node.js 環境</h3><h4 id="安裝-Git-工具"><a href="#安裝-Git-工具" class="headerlink" title="安裝 Git 工具"></a>安裝 Git 工具</h4><p>首先你要有命令提示字元這個 CMD 工具，當然用 Git 控制器來寫也是可以的這邊我會提供兩種作業系統連結。</p>
-<p>Windows <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a> 去點 Downloads 來下載安裝開啟 Git bash 檔案就好。</p>
-<p>MAC <a href="https://www.iterm2.com/" target="_blank" rel="noopener">iterm2</a> 一樣 Download 下載安裝。</p>
-<p>兩種的指令基本上可以共用，還是有一點點小差異就需要去 google 一下了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd 要移動的資料夾名稱 &quot;移動位置&quot; &quot;也可以把要移動到的資料夾拖移進去&quot;</span><br><span class="line">cd .. &quot;返回到上一層&quot;</span><br><span class="line">ls &quot;查看目前所在位置的檔案有哪些&quot;</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="安裝-Node-js"><a href="#安裝-Node-js" class="headerlink" title="安裝 Node.js"></a>安裝 Node.js</h4><p>安裝好了之後接下去安裝 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a> 點進去之後會看到兩個版本分別是 LTS、Current 前者是穩定版本，後者是最新版本，初學者建議安裝穩定版本，下載安裝完成後開啟 CMD 輸入以下指令看是否有安裝成功。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v &quot;這是查看目前 Node.js 版本&quot;</span><br><span class="line">node &quot;單純輸入後可以在裡面執行簡單JavaScript邏輯&quot; &quot;退出狀態按兩下 ctrl+c&quot;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>第一天就做簡單的環境安裝，我個人也是初學者，有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#x70;&#112;&#x38;&#52;&#x30;&#x34;&#x30;&#x35;&#x40;&#103;&#109;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">&#x70;&#112;&#x38;&#52;&#x30;&#x34;&#x30;&#x35;&#x40;&#103;&#109;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/24/Node-js-的-30-天學習日記-第一天/" data-id="cjbxtanel00009gk3u3qsv9pu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/25/Node-js-的-30-天學習日記-第二天/" data-id="cjbz7bp170005jck3fyfg168x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -585,6 +584,11 @@ console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一頁 &raquo;</a>
+  </nav>
 
 </section>
         
@@ -595,6 +599,10 @@ console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/03/Node-js-的-30-天學習日記-第十一天/">Node.js 的 30 天學習日記--第十一天</a>
+          </li>
         
           <li>
             <a href="/2018/01/02/Node-js-的-30-天學習日記-第十天/">Node.js 的 30 天學習日記--第十天</a>
@@ -610,10 +618,6 @@ console.log(path.parse(&apos;/a/b/all.js&apos;)); 分析檔案路徑
         
           <li>
             <a href="/2017/12/30/Node-js-的-30-天學習日記-第七天/">Node.js 的 30 天學習日記--第七天</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/29/Node-js-的-30-天學習日記-第六天/">Node.js 的 30 天學習日記--第六天</a>
           </li>
         
       </ul>

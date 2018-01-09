@@ -63,6 +63,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Node-js-的-30-天學習日記-第十七天" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/09/Node-js-的-30-天學習日記-第十七天/" class="article-date">
+  <time datetime="2018-01-08T16:25:27.000Z" itemprop="datePublished">2018-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/09/Node-js-的-30-天學習日記-第十七天/">Node.js 的 30 天學習日記--第十七天</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Node-js-學習第十六天"><a href="#Node-js-學習第十六天" class="headerlink" title="Node.js 學習第十六天"></a>Node.js 學習第十六天</h3><p>略過………..</p>
+<blockquote>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#x30;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#x30;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
+</blockquote>
+<hr>
+<h3 id="路由設計"><a href="#路由設計" class="headerlink" title="路由設計"></a>路由設計</h3><p>關於路由設計先看別人的網頁如何設計<br><a href="https://www.udemy.com/courses/development/web-development/" target="_blank" rel="noopener">Udemy</a><a href="https://www.udemy.com/courses/development/web-development/" target="_blank" rel="noopener">https://www.udemy.com/courses/development/web-development/</a><br><a href="https://www.udemy.com/courses/development/mobile-apps/" target="_blank" rel="noopener">Udemy</a><a href="https://www.udemy.com/courses/development/mobile-apps/" target="_blank" rel="noopener">https://www.udemy.com/courses/development/mobile-apps/</a><br>這兩個頁面差別就在於針對 development 後面的路徑名稱了。<br>下面程式碼就是針對 development 這個路由新增後面頁面。<br>請使用 cmd 的 node 程式名.js 去作執行在網頁上輸入 127.0.0.1:3000/development/web-development 來去作查看。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">app.get(&apos;/development/web-development&apos;,function(req,res)&#123;</span><br><span class="line">    res.sen(&apos;網頁開發&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&apos;/development/mobile-apps&apos;,function(req,res)&#123;</span><br><span class="line">    res.sen(&apos;行動應用&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">//監聽 port</span><br><span class="line">var port = process.env.PORT || 3000;</span><br><span class="line">app.listen(port);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>像上面講的路徑都是固定的路徑，如果你有一個龐大的資料庫隨時在新增與修改和刪除資料，那要顯示這資料不可能即時監控並給出一組路由，所以就需要用到隨機路徑了，想是下面的頁面一樣設計。<br><a href="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ?&amp;ytbChannel=null" target="_blank" rel="noopener">youtube 音樂頻道</a><br><a href="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ?&amp;ytbChannel=null" target="_blank" rel="noopener">https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ?&amp;ytbChannel=null</a><br><a href="https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw?&amp;ytbChannel=null" target="_blank" rel="noopener">youtube 運動頻道</a><br><a href="https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw?&amp;ytbChannel=null" target="_blank" rel="noopener">https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw?&amp;ytbChannel=null</a><br>差別就在於後面是給一組隨機碼的路徑。</p>
+<hr>
+<h3 id="params-取得指定路徑"><a href="#params-取得指定路徑" class="headerlink" title="params - 取得指定路徑"></a>params - 取得指定路徑</h3><p>params 是一個存取路由名稱的物件格式，再路徑 <strong>/</strong> 後面輸入冒號再打的要取得的物件名稱資料就可以拿到名稱。<br>下面是用在網址欄隨便輸入名稱來存到物件並 console 查看是否有取得名稱，也寫成 <code>var myname = req.params</code> ，再接著去 console 看就可以看到一個物件格是內容。<br>都是需要用 cmd 用 node 執行 JS 檔案。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">app.get(&apos;/user/:name&apos;,function(req,res)&#123;</span><br><span class="line">    var myname = req.params.name;</span><br><span class="line">    console.log(myname)</span><br><span class="line">    res.sen(&apos;網頁開發&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">//監聽 port</span><br><span class="line">var port = process.env.PORT || 3000;</span><br><span class="line">app.listen(port);</span><br></pre></td></tr></table></figure></p>
+<p>一些網站後面的路徑不一定在資料庫裡面，如果不小心輸入或者網站本身已刪除你去查詢後，網站頁面大概會顯示此頁面並不存在，那我們這邊就需要用 if 的方式去判斷網頁路徑是否存在。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">app.get(&apos;/user/:name&apos;,function(req,res)&#123;</span><br><span class="line">    if (myname !== &apos;id&apos;)&#123;</span><br><span class="line">        res.send(&apos;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;此頁面並不存在&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&apos;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        //myname是取得你輸入名稱</span><br><span class="line">        res.send(&apos;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;&apos;+myname+&apos;&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">//監聽 port</span><br><span class="line">var port = process.env.PORT || 3000;</span><br><span class="line">app.listen(port);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>就…..這樣，有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#58;&#112;&#x70;&#x38;&#52;&#x30;&#52;&#48;&#53;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">&#112;&#x70;&#x38;&#52;&#x30;&#52;&#48;&#53;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/09/Node-js-的-30-天學習日記-第十七天/" data-id="cjc7lzg910004ngk3s3vbzwlx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Node-js-的-30-天學習日記-第十六天" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/08/Node-js-的-30-天學習日記-第十六天/" class="article-date">
@@ -87,7 +138,7 @@
       
         <h3 id="Node-js-學習第十六天"><a href="#Node-js-學習第十六天" class="headerlink" title="Node.js 學習第十六天"></a>Node.js 學習第十六天</h3><p>打完昨天日記後有去練習之前 firebase 的所有功能整合，所以還沒把後端一些 web 弄清出，看看學完這框架能不能搞懂。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#112;&#112;&#56;&#x34;&#48;&#52;&#x30;&#x35;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#112;&#112;&#56;&#x34;&#48;&#52;&#x30;&#x35;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#x70;&#x70;&#56;&#x34;&#x30;&#52;&#x30;&#53;&#64;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x70;&#x70;&#56;&#x34;&#x30;&#52;&#x30;&#53;&#64;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="網址規則介紹"><a href="#網址規則介紹" class="headerlink" title="網址規則介紹"></a>網址規則介紹</h3><p>在 cmd 上啟動下面程式碼的 js 檔案  <code>node app.js</code> 然後可以到 127.0.0.1:3000 或 127.0.0.1:3000/user 去看有沒有開啟。<br><strong>/</strong> 後面舊是你的路由（ routing ），在後面就是一些 express 的參數設定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">app.get(&apos;/&apos;,function(req,res)&#123;</span><br><span class="line">    res.sen(&apos;123&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&apos;/user&apos;,function(req,res)&#123;</span><br><span class="line">    res.sen(&apos;456&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">//監聽 port</span><br><span class="line">var port = process.env.PORT || 3000;</span><br><span class="line">app.listen(port);</span><br></pre></td></tr></table></figure></p>
@@ -97,12 +148,12 @@
 </blockquote>
 </blockquote>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天學的都是關於網址的規定與理論，用途看會比較好懂所以我就去找這些圖片，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#111;&#58;&#x70;&#112;&#56;&#52;&#48;&#52;&#48;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#x70;&#112;&#56;&#52;&#48;&#52;&#48;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天學的都是關於網址的規定與理論，用途看會比較好懂所以我就去找這些圖片，有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x70;&#112;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x70;&#112;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/08/Node-js-的-30-天學習日記-第十六天/" data-id="cjc6dm4ix000hqck3vcwwsy1n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/08/Node-js-的-30-天學習日記-第十六天/" data-id="cjc7lzg9o000rngk3kccuzi0o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -138,7 +189,7 @@
       
         <h3 id="Node-js-學習第十五天"><a href="#Node-js-學習第十五天" class="headerlink" title="Node.js 學習第十五天"></a>Node.js 學習第十五天</h3><p>這次要進入新的章節，要正式講 Node.js 框架了。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#x70;&#x70;&#x38;&#52;&#x30;&#52;&#x30;&#53;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x70;&#x70;&#x38;&#52;&#x30;&#52;&#x30;&#53;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x70;&#x70;&#56;&#52;&#48;&#52;&#48;&#x35;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;">&#x70;&#x70;&#56;&#52;&#48;&#52;&#48;&#x35;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="Express-框架介紹與安裝"><a href="#Express-框架介紹與安裝" class="headerlink" title="Express 框架介紹與安裝"></a>Express 框架介紹與安裝</h3><p>express 是 Node.js web 輕量型應用框架，它可以整合下列資料庫框架：</p>
@@ -151,12 +202,12 @@
 <h3 id="新增-web-伺服器"><a href="#新增-web-伺服器" class="headerlink" title="新增 web 伺服器"></a>新增 web 伺服器</h3><p>載入 express 模組功能並執行功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">//查看有連到模組</span><br><span class="line">console.log(app);</span><br></pre></td></tr></table></figure></p>
 <p>第一是路徑指向首頁，第二跟 Node.js 核心模組一樣 <strong>createServer</strong> 的原理 <a href="https://liuconing.github.io/2017/12/26/Node-js-%E7%9A%84-30-%E5%A4%A9%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98-%E7%AC%AC%E4%B8%89%E5%A4%A9/" target="_blank" rel="noopener">第三天</a>。 裡面也可以載入 HTML 格式不一定只能載入<strong>字串</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//  [/]&lt;---等於本機端 127.0.0.1</span><br><span class="line">app.get(&apos;/&apos;,function(req,res)&#123;</span><br><span class="line">    res.sen(&apos;123&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">//監聽 port  沒有預設的port就會跑3000</span><br><span class="line">var port = process.env.PORT || 3000;</span><br><span class="line">app.listen(port);</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>雖然有學到如何開啟，但對於詳細的後端設定還是有一點難理解，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x70;&#x70;&#56;&#x34;&#x30;&#x34;&#48;&#53;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x70;&#x70;&#56;&#x34;&#x30;&#x34;&#48;&#53;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>雖然有學到如何開啟，但對於詳細的後端設定還是有一點難理解，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#112;&#x70;&#x38;&#x34;&#x30;&#x34;&#x30;&#53;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#112;&#x70;&#x38;&#x34;&#x30;&#x34;&#x30;&#53;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/07/Node-js-的-30-天學習日記-第十五天/" data-id="cjc6dm4j1000jqck39e1d2n22" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/07/Node-js-的-30-天學習日記-第十五天/" data-id="cjc7lzg9i000lngk35kaclbbo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -192,19 +243,19 @@
       
         <h3 id="Node-js-學習第十四天"><a href="#Node-js-學習第十四天" class="headerlink" title="Node.js 學習第十四天"></a>Node.js 學習第十四天</h3><p>感覺好想變成學校作業一樣，不趕快在 12 點前作完就會失敗，這樣逼自己寫 w w w 。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x70;&#x70;&#56;&#52;&#48;&#x34;&#48;&#53;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#x70;&#x70;&#56;&#52;&#48;&#x34;&#48;&#53;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x70;&#112;&#56;&#x34;&#48;&#x34;&#48;&#53;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#x70;&#112;&#56;&#x34;&#48;&#x34;&#48;&#53;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="UI-時間介接"><a href="#UI-時間介接" class="headerlink" title="UI 時間介接"></a>UI 時間介接</h3><p>今天這天是讓資料庫的每筆資料新增一組 UNIX 時間代碼，好讓搜尋可以更加方便且在某時間範圍內搜尋。<br>按照下面設定可以去搜尋一整天的記錄。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">        開始時間：&lt;br&gt;</span><br><span class="line">        &lt;input type=&quot;date&quot; id=&quot;time&quot; value=&quot;&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; id=&quot;send&quot; value=&quot;送出&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var time = document.getElementById(&apos;time&apos;);</span><br><span class="line">        var send = document.getElementById(&apos;send&apos;);</span><br><span class="line">        send.addEventListener(&apos;click&apos;,function(e)&#123;</span><br><span class="line">        //確認日期格式是否正確</span><br><span class="line">        console.log(time.value);</span><br><span class="line">        var now = new Date(time.value);</span><br><span class="line">        //把日期格式轉成且設定0時0分0秒0毫秒</span><br><span class="line">        var startTime = now.setHours(0,0,0,0);</span><br><span class="line">        console.log(startTime)</span><br><span class="line">        //把日期格式轉成且設定23時59分59秒999毫秒</span><br><span class="line">        var endTime = now.setHours(23,59,59,999);</span><br><span class="line">        console.log(endTime)</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://i.imgur.com/OCyPT1y.jpg" alt="圖"></p>
 <h3 id="reverse-資料翻轉調整"><a href="#reverse-資料翻轉調整" class="headerlink" title="reverse -資料翻轉調整"></a>reverse -資料翻轉調整</h3><p>原本 firebase 資料新增是由新到舊由上到下排列， reverse 可以把整個資料反轉排列，如果做 Todolist 資料一直往下新增以後資料一多去檢視網頁就比較麻煩。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var data = [1,2,3,4,5];</span><br><span class="line">console.log(data);</span><br><span class="line">data.reverse();</span><br><span class="line">console.log(data);</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://i.imgur.com/iROdydf.jpg" alt="範例結果"><br>不過這語法只能反轉陣列內的資料，物件資料不能翻轉所以要把物件資料 push 到陣列裡面。<br>下面程式碼是用前面練習 Todolist 來做的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">todos.on(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">        var str = &apos;&apos;;</span><br><span class="line">        //新增陣列</span><br><span class="line">        var data = [];</span><br><span class="line">        snapshot.forEach(function(item)&#123;</span><br><span class="line">            //把物件加入陣列裡面</span><br><span class="line">            data.push(item.val());</span><br><span class="line">            console.log(data);</span><br><span class="line">        &#125;)</span><br><span class="line">        //翻轉陣列內資料</span><br><span class="line">        data.reverse();</span><br><span class="line">        //再把資料排列好</span><br><span class="line">        for(var item in data)&#123;</span><br><span class="line">            str+=&apos;&lt;li&gt;&apos;+data[item].content+&apos;&lt;/li&gt;&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">        list.innerHTML = str;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>反轉這語法用在很多的網頁上面做使用，所以可以去了解這語法更詳細的做法，有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#x70;&#x70;&#56;&#52;&#48;&#52;&#48;&#53;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;&#x70;&#56;&#52;&#48;&#52;&#48;&#53;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>反轉這語法用在很多的網頁上面做使用，所以可以去了解這語法更詳細的做法，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#112;&#x70;&#56;&#x34;&#48;&#x34;&#48;&#x35;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#112;&#x70;&#56;&#x34;&#48;&#x34;&#48;&#x35;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/06/Node-js-的-30-天學習日記-第十四天/" data-id="cjc6dm4j4000nqck3gpcgvnkd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/06/Node-js-的-30-天學習日記-第十四天/" data-id="cjc7lzg9k000nngk393yqho10" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -240,19 +291,19 @@
       
         <h3 id="Node-js-學習第十二天"><a href="#Node-js-學習第十二天" class="headerlink" title="Node.js 學習第十二天"></a>Node.js 學習第十二天</h3><p>排列、顯示、新增、刪除、排序、搜尋都有了在來是要如何記錄每筆資料的時間。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#112;&#x70;&#x38;&#x34;&#48;&#52;&#x30;&#x35;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#112;&#x70;&#x38;&#x34;&#48;&#52;&#x30;&#x35;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x70;&#112;&#56;&#x34;&#x30;&#x34;&#x30;&#x35;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x70;&#112;&#56;&#x34;&#x30;&#x34;&#x30;&#x35;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <h3 id="new-Date"><a href="#new-Date" class="headerlink" title="new Date ( )"></a>new Date ( )</h3><p>new Date () 是 JavaSrcipt 內鍵可以產出日期與時間的語法。<br><a href="https://www.w3schools.com/js/js_dates.asp" target="_blank" rel="noopener">new Data</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var time = new Date();</span><br><span class="line">//顯示目前日期與時間和時區</span><br><span class="line">console.log(time);</span><br><span class="line"></span><br><span class="line">//顯示今年</span><br><span class="line">console.log(time.getFullYear);</span><br><span class="line"></span><br><span class="line">//顯示月份  0 = 1月 、 1 = 2月 以此類推</span><br><span class="line">console.log(time.getMonth());</span><br><span class="line"></span><br><span class="line">//顯示禮拜 禮拜日 = 0 、 禮拜一 = 1 以此類推</span><br><span class="line">console.log(time.getDay());</span><br><span class="line"></span><br><span class="line">//顯示目前幾點 24時制</span><br><span class="line">console.log(time.getHours());</span><br><span class="line"></span><br><span class="line">//顯示目前幾分鐘</span><br><span class="line">console.log(time.getMinutes());</span><br><span class="line"></span><br><span class="line">//顯示目前幾秒</span><br><span class="line">console.log(time.getSeconde());</span><br><span class="line"></span><br><span class="line">//顯示毫秒</span><br><span class="line">console.log(time.getMilliseconds());</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="timeStamp"><a href="#timeStamp" class="headerlink" title="timeStamp"></a>timeStamp</h3><p>timeStamp 是時間戳記，它是由 1970 年 1 月 1日 0時 0分 0秒 到你目前時間的總秒數。<br>輸入下面程式碼會得到一組數字，後三碼是毫秒再來前面是秒數累加上去的。<br>取得的一組數字可以放在 Date() 裡面去給電腦換算目前的日期與時間，之後可以再去做比對搜尋。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Date().getTime()</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://i.imgur.com/hbtiQyc.jpg" alt="圖"></p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這是去紀錄每一筆資料的詳細時間，下回就會去學如何使用，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x70;&#x70;&#x38;&#x34;&#48;&#x34;&#48;&#53;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#x70;&#x70;&#x38;&#x34;&#48;&#x34;&#48;&#53;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這是去紀錄每一筆資料的詳細時間，下回就會去學如何使用，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#x70;&#x70;&#x38;&#x34;&#48;&#x34;&#48;&#53;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x70;&#x70;&#x38;&#x34;&#48;&#x34;&#48;&#53;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/05/Node-js-的-30-天學習日記-第十三天/" data-id="cjc6dm4j2000lqck3l7bz9ord" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/05/Node-js-的-30-天學習日記-第十三天/" data-id="cjc7lzg9d000hngk3k3gywxsb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -288,7 +339,7 @@
       
         <h3 id="Node-js-學習第十二天"><a href="#Node-js-學習第十二天" class="headerlink" title="Node.js 學習第十二天"></a>Node.js 學習第十二天</h3><p>今天是學習搜尋規則，雖然是使用 firbabse 的函式庫但邏輯都是大同小異所以學了之後對其它的函式庫可以更快上手。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x70;&#x70;&#56;&#x34;&#x30;&#52;&#48;&#x35;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x70;&#x70;&#56;&#x34;&#x30;&#52;&#48;&#x35;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#x70;&#112;&#56;&#x34;&#48;&#x34;&#48;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x70;&#112;&#56;&#x34;&#48;&#x34;&#48;&#53;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="startAt-、-endAt-、-equalTo-搜尋區間規則-上"><a href="#startAt-、-endAt-、-equalTo-搜尋區間規則-上" class="headerlink" title="startAt 、 endAt 、 equalTo - 搜尋區間規則 (上)"></a>startAt 、 endAt 、 equalTo - 搜尋區間規則 (上)</h3><p>startAt - 搜尋你設定以上的值<br>endAt - 搜尋你設定以下的值<br>equalTo - 搜尋你設定等於的值<br>這三個是搜尋區間規格的函式。<br>下面是用前一天的範例修改值後再去做新增，在你要排序的資料( orderByChild )後面在新增函式。<br>startAt 、 endAt 可以用在一起， equalTo 就要單獨使用了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">var people = &#123;</span><br><span class="line">        &quot;mike&quot;: &#123;</span><br><span class="line">          &quot;length&quot; : 12.5,</span><br><span class="line">          &quot;weight&quot;: 5000,</span><br><span class="line">          &quot;mail&quot;:sas@gmail.com</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;casper&quot;: &#123;</span><br><span class="line">          &quot;length&quot; : 9,</span><br><span class="line">          &quot;weight&quot; : 4500,</span><br><span class="line">          &quot;mail&quot;:qwe@gmail.com</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;bob&quot;: &#123;</span><br><span class="line">          &quot;length&quot; : false,</span><br><span class="line">          &quot;weight&quot; : 3500,</span><br><span class="line">          &quot;mail&quot;:zxc@gmail.com</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;john&quot;: &#123;</span><br><span class="line">          &quot;length&quot; : 9,</span><br><span class="line">          &quot;weight&quot; : 3500,</span><br><span class="line">          &quot;mail&quot;:rty@gmail.com</span><br><span class="line">        &#125;</span><br><span class="line">        ,</span><br><span class="line">        &quot;josh&quot;: &#123;</span><br><span class="line">          &quot;length&quot; : 9,</span><br><span class="line">          &quot;weight&quot; : 2500,</span><br><span class="line">          &quot;mail&quot;:uio@gmail.com</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    firebase.database().ref(&apos;people&apos;).set(people);</span><br><span class="line">peopleRef.orderByChild(&apos;weight&apos;).startAt(2500).endAt(4000).once(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">        snapshot.forEach(function(item)&#123;</span><br><span class="line">        //.key 在這是可以撈出子目錄</span><br><span class="line">            console.log(item.key);</span><br><span class="line">            console.log(item.val());</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
@@ -296,12 +347,12 @@
 <hr>
 <h3 id="limit-限制筆數"><a href="#limit-限制筆數" class="headerlink" title="limit - 限制筆數"></a>limit - 限制筆數</h3><p>如果資料庫太過於龐大，如何去設定只有 10 筆或 20 筆資料顯示在網頁上面，就要使用 limit 的方式去撈出資料，那就要使用 firebase 的函式庫了。<br>limitToFirst (值) - 撈出第幾筆資料<br>limitLast (值) - 撈出最後幾筆資料<br>可以搭配搜尋區間規則使用。<br>下面範例就是只撈出符合資料的 2 筆。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">peopleRef.orderByChild(&apos;weight&apos;).startAt(2500).limitToFirst(2).once(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">        snapshot.forEach(function(item)&#123;</span><br><span class="line">        //.key 在這是可以撈出子目錄</span><br><span class="line">            console.log(item.key);</span><br><span class="line">            console.log(item.val());</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天一樣學的是規則，搭配前一天學的規則去做使用，就可以去做一些蒐尋功能做使用了。<br>有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x70;&#112;&#56;&#52;&#x30;&#52;&#x30;&#53;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x70;&#112;&#56;&#52;&#x30;&#52;&#x30;&#53;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天一樣學的是規則，搭配前一天學的規則去做使用，就可以去做一些蒐尋功能做使用了。<br>有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#x70;&#112;&#x38;&#52;&#48;&#52;&#x30;&#53;&#x40;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#x70;&#112;&#x38;&#52;&#48;&#52;&#x30;&#53;&#x40;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/04/Node-js-的-30-天學習日記-第十二天/" data-id="cjc6dm4j6000pqck3o4k4iwub" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/04/Node-js-的-30-天學習日記-第十二天/" data-id="cjc7lzg9l000pngk31zgym3kz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -337,7 +388,7 @@
       
         <h3 id="Node-js-學習第十一天"><a href="#Node-js-學習第十一天" class="headerlink" title="Node.js 學習第十一天"></a>Node.js 學習第十一天</h3><p>第十一天有看到幾家公司的求職條件要求都好高，對於我這個新鮮人來講實在是很難有優勢，只好繼續學多增加作品吧。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x70;&#112;&#x38;&#52;&#x30;&#x34;&#48;&#x35;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;&#112;&#x38;&#52;&#x30;&#x34;&#48;&#x35;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#112;&#112;&#56;&#x34;&#x30;&#52;&#x30;&#53;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#112;&#112;&#56;&#x34;&#x30;&#52;&#x30;&#53;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="forEach、orderByChild-資料排序篇"><a href="#forEach、orderByChild-資料排序篇" class="headerlink" title="forEach、orderByChild - 資料排序篇"></a>forEach、orderByChild - 資料排序篇</h3><p>這資料排序的語法是 firebase 的，所以今天學的事如何把 firebase 資料庫裡面的資料由小到大。<br>orderByChild 的語法是選取要排序的子鍵，單獨使用是沒辦法排序要跟 forEach 使用來完成排序。<br>先看 firebase 的<a href="https://firebase.google.com/docs/database/admin/retrieve-data?hl=zh-cn#orderbychild" target="_blank" rel="noopener">排序規則</a><br>基本上規則是:</p>
@@ -351,12 +402,12 @@
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">// 排序weight的資料由小到大</span><br><span class="line">//宣告物件</span><br><span class="line">   var people = &#123;</span><br><span class="line">       &quot;mike&quot;: &#123;</span><br><span class="line">         &quot;height&quot; : 4,</span><br><span class="line">         &quot;length&quot; : 12.5,</span><br><span class="line">         &quot;weight&quot;: 5000</span><br><span class="line">       &#125;,</span><br><span class="line">       &quot;casper&quot;: &#123;</span><br><span class="line">         &quot;height&quot; : 3,</span><br><span class="line">         &quot;length&quot; : 9,</span><br><span class="line">         &quot;weight&quot; : 2500</span><br><span class="line">       &#125;,</span><br><span class="line">       &quot;bob&quot;: &#123;</span><br><span class="line">         &quot;height&quot;: &quot;dalse&quot;,</span><br><span class="line">         &quot;length&quot; : false,</span><br><span class="line">         &quot;weight&quot; : 2500</span><br><span class="line">       &#125;,</span><br><span class="line">       &quot;john&quot;: &#123;</span><br><span class="line">         &quot;height&quot; : true,</span><br><span class="line">         &quot;length&quot; : 9,</span><br><span class="line">         &quot;weight&quot; : 2500</span><br><span class="line">       &#125;</span><br><span class="line">       ,</span><br><span class="line">       &quot;josh&quot;: &#123;</span><br><span class="line">         &quot;height&quot; : false,</span><br><span class="line">         &quot;length&quot; : 9,</span><br><span class="line">         &quot;weight&quot; : 2500</span><br><span class="line">       &#125;,</span><br><span class="line">       &apos;boss&apos;:&#123;</span><br><span class="line">         &quot;length&quot;: 3</span><br><span class="line">       &#125;,</span><br><span class="line">       &apos;frank&apos;:&#123;</span><br><span class="line">         height:&#123;&apos;aaa&apos;:1&#125;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;;</span><br><span class="line">   //選取並新增people目錄並新增people物件資料</span><br><span class="line">   firebase.database().ref(&apos;people&apos;).set(people);</span><br><span class="line">   //宣告變數指定people子目錄</span><br><span class="line">   var peopleRef = firebase.database().ref(&apos;people&apos;);</span><br><span class="line">   // 路徑&gt;&gt;排序(&apos;屬性&apos;)&gt;&gt;讀取&gt; forEach 依序撈出資料</span><br><span class="line">   peopleRef.orderByChild(&apos;height&apos;).once(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">       snapshot.forEach(function(item)&#123;</span><br><span class="line">           console.log(item.val());</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次排序規則對於要處理或顯示資料做排列的網站很有用，有需要的話可以去查詢 JavaScript 的排序如何做使用。<br>有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x70;&#x70;&#56;&#52;&#48;&#x34;&#48;&#53;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#x70;&#x70;&#56;&#52;&#48;&#x34;&#48;&#53;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次排序規則對於要處理或顯示資料做排列的網站很有用，有需要的話可以去查詢 JavaScript 的排序如何做使用。<br>有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#112;&#x70;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/03/Node-js-的-30-天學習日記-第十一天/" data-id="cjc6dm4iu000dqck3xdgs5aw1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/03/Node-js-的-30-天學習日記-第十一天/" data-id="cjc7lzg9g000jngk3nppmhi79" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -392,16 +443,16 @@
       
         <h3 id="Node-js-學習第十天"><a href="#Node-js-學習第十天" class="headerlink" title="Node.js 學習第十天"></a>Node.js 學習第十天</h3><p>今天第十天來學上次剩下的。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#112;&#112;&#56;&#52;&#x30;&#52;&#48;&#53;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#112;&#112;&#56;&#52;&#x30;&#52;&#48;&#53;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x70;&#x70;&#56;&#52;&#48;&#52;&#x30;&#53;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;&#x70;&#56;&#52;&#48;&#52;&#x30;&#53;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="todolist-下"><a href="#todolist-下" class="headerlink" title="todolist (下)"></a>todolist (下)</h3><p>上一次講的事如何新增內容與顯示 darabase 的實際應用，這是學的是如何做刪除動作，新增一個刪除的邏輯與 dataset 方式。<br><a href="https://pjchender.blogspot.tw/2017/01/html-5-data-attribute.html" target="_blank" rel="noopener">HTML的dataset</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 拉出資料庫內容並渲染到網頁上</span><br><span class="line">    todos.on(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">      var str =&apos;&apos;;</span><br><span class="line">      var data = snapshot.val();</span><br><span class="line">      for(var item in data)&#123;</span><br><span class="line">        //新增一筆dataset的資料在li上面</span><br><span class="line">        str +=&apos;&lt;li data-key=&quot;&apos;+[item]+&apos;&quot;&gt;&apos;+data[item].content+&apos;&lt;/li&gt;&apos;;</span><br><span class="line">      &#125;</span><br><span class="line">      list.innerHTML = str ;</span><br><span class="line">    &#125;)</span><br><span class="line">    //刪除邏輯</span><br><span class="line">    //選取要刪除的dom元素事件</span><br><span class="line">    list.addEventListener(&apos;click&apos;,function(e)&#123;</span><br><span class="line">      //如果點選的地方等於li元素執行內容</span><br><span class="line">      if(e.target.nodeName = &quot;LI&quot;)&#123;</span><br><span class="line">        //宣告變數點選位置的dataset值</span><br><span class="line">        var key = e.target.dataset.key;</span><br><span class="line">        //子目錄指定key並刪除子目錄下的內容</span><br><span class="line">        todos.child(key).remove();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>基本上 database 的新增刪除讀取應用就這樣看大家玩出什麼樣的應用，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x70;&#112;&#56;&#x34;&#x30;&#52;&#48;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x70;&#112;&#56;&#x34;&#x30;&#52;&#48;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>基本上 database 的新增刪除讀取應用就這樣看大家玩出什麼樣的應用，有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#x70;&#x70;&#x38;&#52;&#x30;&#x34;&#x30;&#53;&#x40;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;">&#x70;&#x70;&#x38;&#52;&#x30;&#x34;&#x30;&#53;&#x40;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/02/Node-js-的-30-天學習日記-第十天/" data-id="cjc6dm4jm000xqck3u6ido40e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/02/Node-js-的-30-天學習日記-第十天/" data-id="cjc7lzg9p000tngk3prm9rfq9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -437,18 +488,18 @@
       
         <h3 id="Node-js-學習第九天"><a href="#Node-js-學習第九天" class="headerlink" title="Node.js 學習第九天"></a>Node.js 學習第九天</h3><p>2018 年的第一天，一樣再學習不過玩太瘋所以這次日記內容大概一段落吧(?</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#112;&#x38;&#x34;&#48;&#52;&#48;&#x35;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#112;&#112;&#x38;&#x34;&#48;&#52;&#48;&#x35;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x70;&#112;&#x38;&#x34;&#x30;&#52;&#x30;&#x35;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x70;&#112;&#x38;&#x34;&#x30;&#52;&#x30;&#x35;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="todolist-上"><a href="#todolist-上" class="headerlink" title="todolist (上)"></a>todolist (上)</h3><p>使用之前學的新增與抓資料庫的方法，首先建立一個 html 裡面就載入 Firebase 資料然後按照下面範例去執行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  //建立輸入欄位與按鈕</span><br><span class="line">  &lt;input type=&quot;text&quot; id=&quot;txt&quot; placeholder=&quot;請輸入內容....&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;button&quot; id=&quot;send&quot; value=&quot;送出&quot;&gt;</span><br><span class="line">  //只建立 ul 之後要放入 li 內容</span><br><span class="line">  &lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">  &lt;script src=&quot;https://www.gstatic.com/firebasejs/4.8.1/firebase.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    // Initialize Firebase</span><br><span class="line">    var config = &#123;</span><br><span class="line">      apiKey: &quot;AIzaSyBGF1qu8w1tgKFYCCmrLXVSNe_6_Mam4iU&quot;,</span><br><span class="line">      authDomain: &quot;demoindex-de647.firebaseapp.com&quot;,</span><br><span class="line">      databaseURL: &quot;https://demoindex-de647.firebaseio.com&quot;,</span><br><span class="line">      projectId: &quot;demoindex-de647&quot;,</span><br><span class="line">      storageBucket: &quot;demoindex-de647.appspot.com&quot;,</span><br><span class="line">      messagingSenderId: &quot;1022331239034&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">    firebase.initializeApp(config);</span><br><span class="line">    //操縱 dom 元素</span><br><span class="line">    var txt = document.getElementById(&apos;txt&apos;);</span><br><span class="line">    var send = document.getElementById(&apos;send&apos;);</span><br><span class="line">    var list = document.getElementById(&apos;list&apos;);</span><br><span class="line">    // 建立 todos 資料</span><br><span class="line">    var todos = firebase.database().ref(&apos;todos&apos;);</span><br><span class="line">    // 寫入資料庫</span><br><span class="line">    send.addEventListener(&apos;click&apos;,function(e)&#123;</span><br><span class="line">      todos.push(&#123;content : txt.value&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    // 拉出資料庫內容並渲染到網頁上</span><br><span class="line">    todos.on(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">      var str =&apos;&apos;;</span><br><span class="line">      var data = snapshot.val();</span><br><span class="line">      for(var item in data)&#123;</span><br><span class="line">        str +=&apos;&lt;li&gt;&apos;+data[item].content+&apos;&lt;/li&gt;&apos;;</span><br><span class="line">      &#125;</span><br><span class="line">      list.innerHTML = str ;</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://i.imgur.com/OJq5sjn.jpg" alt="展示"></p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次只會講如何新增，下一次就講如何做刪除的動作，跨年玩太瘋所以才學習這麼少，明天大概就會穩定了，有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#58;&#112;&#x70;&#x38;&#52;&#48;&#x34;&#x30;&#x35;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#112;&#x70;&#x38;&#52;&#48;&#x34;&#x30;&#x35;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這次只會講如何新增，下一次就講如何做刪除的動作，跨年玩太瘋所以才學習這麼少，明天大概就會穩定了，有任何問題歡迎寫 MAIL： <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x70;&#x70;&#56;&#52;&#x30;&#x34;&#48;&#53;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;&#x70;&#56;&#52;&#x30;&#x34;&#48;&#53;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/01/Node-js-的-30-天學習日記-第九天/" data-id="cjc6dm4il0004qck3wd20xl55" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/01/Node-js-的-30-天學習日記-第九天/" data-id="cjc7lzg960008ngk3r4keqjux" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -484,68 +535,19 @@
       
         <h3 id="Node-js-學習第八天"><a href="#Node-js-學習第八天" class="headerlink" title="Node.js 學習第八天"></a>Node.js 學習第八天</h3><p>晚上出門跨年，出門前也來學習一下不過應該學不多，看我看到哪裡這篇筆記就寫到哪裡囉，有可能只有短短的幾行文字。</p>
 <blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#x70;&#x70;&#56;&#x34;&#48;&#52;&#x30;&#x35;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x70;&#x70;&#56;&#x34;&#48;&#52;&#x30;&#x35;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a> 提醒我錯誤。</p>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#x70;&#112;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#x70;&#112;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a> 提醒我錯誤。</p>
 </blockquote>
 <hr>
 <h3 id="remove、child-移除資料"><a href="#remove、child-移除資料" class="headerlink" title="remove、child - 移除資料"></a>remove、child - 移除資料</h3><p>child 是子路徑用法，再 ref 裡面寫路徑跟 child 寫路徑效果是一樣 。<br><code>firebase.database().ref(&#39;myname).remove();</code><br><code>firebase.database().ref().child(&#39;myname&#39;).remove();</code></p>
 <hr>
 <h3 id="在網頁即時看到-Firebase-資料庫資料"><a href="#在網頁即時看到-Firebase-資料庫資料" class="headerlink" title="在網頁即時看到 Firebase 資料庫資料"></a>在網頁即時看到 Firebase 資料庫資料</h3><p>看範例圖並做一遍，也不一定要抓根目錄以下所有的資料，可以指向子目錄抓取單一。<br><img src="https://i.imgur.com/Cu3b4Nv.jpg" alt="範例"></p>
 <hr>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>要跟朋友去跨年所以才記錄兩個小段落，隔天在一口氣把 todolist 學完吧。<br>有任何問題歡迎寫 MAIL： <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#112;&#112;&#x38;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#112;&#112;&#x38;&#x34;&#x30;&#x34;&#x30;&#53;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a> 一起共同討論。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>要跟朋友去跨年所以才記錄兩個小段落，隔天在一口氣把 todolist 學完吧。<br>有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#112;&#x70;&#56;&#52;&#48;&#x34;&#48;&#x35;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#112;&#x70;&#56;&#52;&#48;&#x34;&#48;&#x35;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a> 一起共同討論。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/31/Node-js-的-30-天學習日記-第八天/" data-id="cjc6dm4is000aqck3jjsze7zu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Node-js-的-30-天學習日記-第七天" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/30/Node-js-的-30-天學習日記-第七天/" class="article-date">
-  <time datetime="2017-12-29T19:30:06.000Z" itemprop="datePublished">2017-12-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/30/Node-js-的-30-天學習日記-第七天/">Node.js 的 30 天學習日記--第七天</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Node-js-學習第七天"><a href="#Node-js-學習第七天" class="headerlink" title="Node.js 學習第七天"></a>Node.js 學習第七天</h3><p>痾<del>~</del>已經 30 號了再過一天就 31 號年底準備跨年拉，想到畢業後過了半年還沒找到工作真是不爽，只能繼續投履歷繼續找阿，不過先去朋友快樂的跨年再說囉！！</p>
-<blockquote>
-<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x70;&#56;&#52;&#x30;&#52;&#x30;&#53;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#112;&#x70;&#56;&#52;&#x30;&#52;&#x30;&#53;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a> 提醒我錯誤。</p>
-</blockquote>
-<hr>
-<h3 id="once-顯示資料到網頁"><a href="#once-顯示資料到網頁" class="headerlink" title="once - 顯示資料到網頁"></a>once - 顯示資料到網頁</h3><p>once 這語法是只讀取資料庫的資料一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//把資料寫入資料庫</span><br><span class="line">firebase.database().ref(&apos;myname&apos;).set(&apos;mark&apos;);</span><br><span class="line">//宣告一個變數指定位子</span><br><span class="line">var myName = firebase.database().ref(&apos;myname&apos;);</span><br><span class="line">//once 只讀取資料庫的資料一次 on 隨時監聽</span><br><span class="line">//once 裡面的函式像快照把資料記錄一次名稱自訂</span><br><span class="line">myName.once(&apos;value&apos;,function(snapshot)&#123;</span><br><span class="line">  document.getElementById(&apos;title&apos;).textContent = snapshot.val();</span><br><span class="line">  console.log(snapshot.val());</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://images2.imgbox.com/35/30/nOuTwZYv_o.jpg" alt="範例"><br><img src="https://images2.imgbox.com/9f/28/ElGeOxS3_o.jpg" alt="結果"></p>
-<p>如果要使用 on 的語法就把 once 改成 on ，on 就把資料庫更新資料時可以即時監聽。</p>
-<p>還有一種新增資了方法就是 push ， push 跟 set 的差別在於 firebase 把 push 新增的物件資料會多加一組 key 值並且只能新增物件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firebase.database().ref(&apos;push顯示&apos;).push(&#123;content:&apos;你好嗎?&apos;&#125;);</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://images2.imgbox.com/8c/02/oqk6kYy1_o.jpg" alt="結果"></p>
-<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>今天講的就是新增資料的方法，明天 31 號會講移除的方法不過應該會很短，要跟朋友去跨年阿。<br>有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#112;&#112;&#56;&#52;&#x30;&#52;&#x30;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#112;&#112;&#56;&#52;&#x30;&#52;&#x30;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a> 一起共同討論。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/30/Node-js-的-30-天學習日記-第七天/" data-id="cjc6dm4if0001qck3cfqvhxly" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/31/Node-js-的-30-天學習日記-第八天/" data-id="cjc7lzg98000angk32zaoqe20" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
@@ -575,6 +577,10 @@
       <ul>
         
           <li>
+            <a href="/2018/01/09/Node-js-的-30-天學習日記-第十七天/">Node.js 的 30 天學習日記--第十七天</a>
+          </li>
+        
+          <li>
             <a href="/2018/01/08/Node-js-的-30-天學習日記-第十六天/">Node.js 的 30 天學習日記--第十六天</a>
           </li>
         
@@ -588,10 +594,6 @@
         
           <li>
             <a href="/2018/01/05/Node-js-的-30-天學習日記-第十三天/">Node.js 的 30 天學習日記--第十三天</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/04/Node-js-的-30-天學習日記-第十二天/">Node.js 的 30 天學習日記--第十二天</a>
           </li>
         
       </ul>

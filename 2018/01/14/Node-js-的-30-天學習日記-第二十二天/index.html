@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Node.js 的 30 天學習日記--第二十二天 | 程式語言學習筆記</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Node.js 學習第二十二天 如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#112;&amp;#56;&amp;#x34;&amp;#x30;&amp;#52;&amp;#48;&amp;#x35;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#105;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#111;&amp;#x6d; 提醒我錯誤。   Postman - API 管理工具管理 API 好用的工具 Postman ，請按照自己的作">
+<meta name="keywords" content="學習日記">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 的 30 天學習日記--第二十二天">
+<meta property="og:url" content="http://yoursite.com/2018/01/14/Node-js-的-30-天學習日記-第二十二天/index.html">
+<meta property="og:site_name" content="程式語言學習筆記">
+<meta property="og:description" content="Node.js 學習第二十二天 如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#112;&amp;#56;&amp;#x34;&amp;#x30;&amp;#52;&amp;#48;&amp;#x35;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#105;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#111;&amp;#x6d; 提醒我錯誤。   Postman - API 管理工具管理 API 好用的工具 Postman ，請按照自己的作">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://i.imgur.com/iEcsDSg.jpg">
+<meta property="og:image" content="https://i.imgur.com/Uon7ux0.jpg">
+<meta property="og:image" content="blob:https://imgur.com/f397a033-e7aa-4b5a-ba8a-ecf3296bf137">
+<meta property="og:updated_time" content="2018-01-13T18:40:45.801Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js 的 30 天學習日記--第二十二天">
+<meta name="twitter:description" content="Node.js 學習第二十二天 如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#112;&amp;#56;&amp;#x34;&amp;#x30;&amp;#52;&amp;#48;&amp;#x35;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#105;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#111;&amp;#x6d; 提醒我錯誤。   Postman - API 管理工具管理 API 好用的工具 Postman ，請按照自己的作">
+<meta name="twitter:image" content="https://i.imgur.com/iEcsDSg.jpg">
+<link rel="publisher" href="UA-111525900-1">
+  
+    <link rel="alternate" href="/atom.xml" title="程式語言學習筆記" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">程式語言學習筆記</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Node-js-的-30-天學習日記-第二十二天" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/14/Node-js-的-30-天學習日記-第二十二天/" class="article-date">
+  <time datetime="2018-01-13T16:18:17.000Z" itemprop="datePublished">2018-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Node.js 的 30 天學習日記--第二十二天
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Node-js-學習第二十二天"><a href="#Node-js-學習第二十二天" class="headerlink" title="Node.js 學習第二十二天"></a>Node.js 學習第二十二天</h3><blockquote>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x70;&#112;&#56;&#x34;&#x30;&#52;&#48;&#x35;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x70;&#112;&#56;&#x34;&#x30;&#52;&#48;&#x35;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;</a> 提醒我錯誤。</p>
+</blockquote>
+<hr>
+<h3 id="Postman-API-管理工具"><a href="#Postman-API-管理工具" class="headerlink" title="Postman - API 管理工具"></a>Postman - API 管理工具</h3><p>管理 API 好用的工具 <a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a> ，請按照自己的作業系統版本去安裝。<br><img src="https://i.imgur.com/iEcsDSg.jpg" alt="Postman"><br>請務必邊做邊看<br><a href="https://medium.com/@mikru168/postman-%E6%B8%AC%E8%A9%A6web-service%E7%9A%84%E5%B7%A5%E5%85%B7-c7726997868a" target="_blank" rel="noopener">Postman 介紹</a></p>
+<hr>
+<h3 id="Postman-取得-get-資料、基礎操作"><a href="#Postman-取得-get-資料、基礎操作" class="headerlink" title="Postman - 取得 get 資料、基礎操作"></a>Postman - 取得 get 資料、基礎操作</h3><ol>
+<li><p>請先建立下面 app.js 檔案。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> engine = <span class="built_in">require</span>(<span class="string">'ejs-locals'</span>);</span><br><span class="line">app.engine(<span class="string">'ejs'</span>,engine);</span><br><span class="line">app.set(<span class="string">'views'</span>,<span class="string">'./views'</span>);</span><br><span class="line">app.set(<span class="string">'view engine'</span>,<span class="string">'ejs'</span>);</span><br><span class="line"><span class="comment">//靜態檔路徑</span></span><br><span class="line">app.use(express.static(<span class="string">'public'</span>));</span><br><span class="line">app.get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    res.send(<span class="string">'你進入到首頁'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'有人造訪首頁'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//監聽 port</span></span><br><span class="line"><span class="keyword">var</span> port = process.env.PORT || <span class="number">3000</span>;</span><br><span class="line">app.listen(port);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 postman 新增一個專案資料夾 nodetest<br><img src="https://i.imgur.com/Uon7ux0.jpg" alt="新增"></p>
+</li>
+<li>新增好啟動 app.js 把 127.0.0.1:3000 你的網址貼到 postman 的 GET 欄上面然後點擊 send 下面欄位就會取得你 JS 檔案送出的資料。<br><img src="blob:https://imgur.com/f397a033-e7aa-4b5a-ba8a-ecf3296bf137" alt="GIF"></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/14/Node-js-的-30-天學習日記-第二十二天/" data-id="cjcdp6dk70004iwk38bkdm38h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/13/Node-js-的-30-天學習日記-第二十一天/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Node.js 的 30 天學習日記--第二十一天</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/14/Node-js-的-30-天學習日記-第二十二天/">Node.js 的 30 天學習日記--第二十二天</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/13/Node-js-的-30-天學習日記-第二十一天/">Node.js 的 30 天學習日記--第二十一天</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/12/Node-js-的-30-天學習日記-第二十天/">Node.js 的 30 天學習日記--第二十天</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/11/Node-js-的-30-天學習日記-第十九天/">Node.js 的 30 天學習日記--第十九天</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/10/Node-js-的-30-天學習日記-第十八天/">Node.js 的 30 天學習日記--第十八天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/學習日記/" style="font-size: 10px;">學習日記</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

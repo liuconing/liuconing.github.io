@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Node.js 的 30 天學習日記--第二十七天 | 程式語言學習筆記</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Node.js 學習第二十七天原本預計 19 號能回到家完成當天的日記，結果開車長途太累了梳洗一番就去睡，所以 27 跟 28 天的日記都在 20 號完成。  如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#x70;&amp;#x38;&amp;#x34;&amp;#48;&amp;#x34;&amp;#x30;&amp;#x35;&amp;#x40;&amp;#103;&amp;#109;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#">
+<meta name="keywords" content="學習日記">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 的 30 天學習日記--第二十七天">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/Node-js-的-30-天學習日記-第二十七天/index.html">
+<meta property="og:site_name" content="程式語言學習筆記">
+<meta property="og:description" content="Node.js 學習第二十七天原本預計 19 號能回到家完成當天的日記，結果開車長途太累了梳洗一番就去睡，所以 27 跟 28 天的日記都在 20 號完成。  如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#x70;&amp;#x38;&amp;#x34;&amp;#48;&amp;#x34;&amp;#x30;&amp;#x35;&amp;#x40;&amp;#103;&amp;#109;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://i.imgur.com/kCdtfHS.jpg">
+<meta property="og:image" content="https://i.imgur.com/B1We7Mo.jpg">
+<meta property="og:updated_time" content="2018-01-20T20:48:36.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js 的 30 天學習日記--第二十七天">
+<meta name="twitter:description" content="Node.js 學習第二十七天原本預計 19 號能回到家完成當天的日記，結果開車長途太累了梳洗一番就去睡，所以 27 跟 28 天的日記都在 20 號完成。  如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#x70;&amp;#x38;&amp;#x34;&amp;#48;&amp;#x34;&amp;#x30;&amp;#x35;&amp;#x40;&amp;#103;&amp;#109;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#">
+<meta name="twitter:image" content="https://i.imgur.com/kCdtfHS.jpg">
+<link rel="publisher" href="UA-111525900-1">
+  
+    <link rel="alternate" href="/atom.xml" title="程式語言學習筆記" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">程式語言學習筆記</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Node-js-的-30-天學習日記-第二十七天" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Node-js-的-30-天學習日記-第二十七天/" class="article-date">
+  <time datetime="2018-01-20T05:38:35.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Node.js 的 30 天學習日記--第二十七天
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Node-js-學習第二十七天"><a href="#Node-js-學習第二十七天" class="headerlink" title="Node.js 學習第二十七天"></a>Node.js 學習第二十七天</h3><p>原本預計 19 號能回到家完成當天的日記，結果開車長途太累了梳洗一番就去睡，所以 27 跟 28 天的日記都在 20 號完成。</p>
+<blockquote>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#x70;&#x70;&#x38;&#x34;&#48;&#x34;&#x30;&#x35;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x70;&#x70;&#x38;&#x34;&#48;&#x34;&#x30;&#x35;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
+</blockquote>
+<hr>
+<h3 id="RESTful-API-todolist-新增資料-API"><a href="#RESTful-API-todolist-新增資料-API" class="headerlink" title="RESTful API todolist - 新增資料 API"></a>RESTful API todolist - 新增資料 API</h3><p>傳送 API 到前端給前端去處理 API 資料。</p>
+<ol>
+<li><p>新增一個 addTodo 的 POST 路由，前面設定請自行增加。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前面設定請自行增加</span></span><br><span class="line"><span class="comment">//首頁路由</span></span><br><span class="line">app.get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//連到 firebase data </span></span><br><span class="line">    firdata.ref(<span class="string">'todos'</span>).once(<span class="string">'value'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">snapshot</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//把資料庫裡面的值取出來並指定到 list</span></span><br><span class="line">        <span class="keyword">var</span> data = snapshot.val();</span><br><span class="line">        <span class="keyword">var</span> list = data.title;</span><br><span class="line">        <span class="comment">//取出來後執行 render 並帶入title有list值</span></span><br><span class="line">        res.render(<span class="string">'index'</span>,&#123;<span class="string">"title"</span>:list&#125;);</span><br><span class="line">    &#125;)    </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//新增邏輯</span></span><br><span class="line">app.post(<span class="string">'/addTodo'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//撈存在req.body的cotent資料</span></span><br><span class="line">    <span class="keyword">var</span> content = req.body.content;</span><br><span class="line">    <span class="keyword">var</span> contentRef = firdata.ref(<span class="string">'todos'</span>).push();</span><br><span class="line">    contentRef.set(&#123;<span class="string">'content'</span>:content&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        firdata.ref(<span class="string">'todos'</span>).once(<span class="string">'value'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">snapshot</span>)</span>&#123;</span><br><span class="line">            <span class="comment">//小細節，傳送內容寫這樣前端比較好去做判斷</span></span><br><span class="line">            res.send(&#123;</span><br><span class="line">                <span class="string">"success"</span>:<span class="literal">true</span>,</span><br><span class="line">                <span class="string">"result"</span>:snapshot.val(),</span><br><span class="line">                <span class="string">"message"</span>:<span class="string">"讀取成功"</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 監聽 port</span></span><br><span class="line"><span class="keyword">var</span> port = process.env.PORT || <span class="number">3000</span>;</span><br><span class="line">app.listen(port);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 postman 去做測試<br><img src="https://i.imgur.com/kCdtfHS.jpg" alt="新增測試畫面"></p>
+</li>
+</ol>
+<hr>
+<h3 id="RESTful-API-todolist-刪除資料-API"><a href="#RESTful-API-todolist-刪除資料-API" class="headerlink" title="RESTful API todolist - 刪除資料 API"></a>RESTful API todolist - 刪除資料 API</h3><p>做刪除邏輯撰寫</p>
+<ol>
+<li><p>一樣前面設定自行寫入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//刪除邏輯</span></span><br><span class="line">app.post(<span class="string">'/removeTodo'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//取得firebase的隨機KEY</span></span><br><span class="line">    <span class="keyword">var</span> _id = req.body.id;</span><br><span class="line">    firdata.ref(<span class="string">'todos'</span>).child(_id).remove().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        firdata.ref(<span class="string">'todos'</span>).once(<span class="string">'value'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">snapshot</span>)</span>&#123;</span><br><span class="line">            res.send(&#123;</span><br><span class="line">                <span class="string">"success"</span>:<span class="literal">true</span>,</span><br><span class="line">                <span class="string">"result"</span>:snapshot.val(),</span><br><span class="line">                <span class="string">"message"</span>:<span class="string">"刪除成功"</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 監聽 port</span></span><br><span class="line"><span class="keyword">var</span> port = process.env.PORT || <span class="number">3000</span>;</span><br><span class="line">app.listen(port);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一樣使用 postman 去測試，key值那邊要打 id ， value 需要複製隨機 KEY 去測試<br><img src="https://i.imgur.com/B1We7Mo.jpg" alt="刪除測試畫面"></p>
+</li>
+</ol>
+<hr>
+<h3 id="RESTful-API-todolist-EJS-init"><a href="#RESTful-API-todolist-EJS-init" class="headerlink" title="RESTful API todolist - EJS init"></a>RESTful API todolist - EJS init</h3><p>新增跟刪除邏輯寫好之後就只是把 firebase 資料放到首頁上去顯示，剩下的邏輯在去寫一個 JS 用網頁做刪除動做。</p>
+<ol>
+<li><p>更改 app.js 首頁內容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首頁路由</span></span><br><span class="line">app.get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//連到 firebase data </span></span><br><span class="line">    firdata.ref(<span class="string">'todos'</span>).once(<span class="string">'value'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">snapshot</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> data = snapshot.val();</span><br><span class="line">        res.render(<span class="string">'index'</span>,&#123;<span class="string">"todoslist"</span>:data&#125;);</span><br><span class="line">    &#125;)    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改 index.ejs 的內容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>代辦事項<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"content"</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"send"</span> <span class="attr">value</span>=<span class="string">"儲存"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">for</span>(<span class="attr">itme</span> <span class="attr">in</span> <span class="attr">todoslist</span>)&#123; %&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%-</span> <span class="attr">todoslist</span>[<span class="attr">itme</span>]<span class="attr">.content</span> %&gt;</span> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"刪除"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/all.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>有任何問題歡迎寫 MAIL： <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#112;&#x70;&#56;&#52;&#48;&#x34;&#48;&#x35;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#112;&#x70;&#56;&#52;&#48;&#x34;&#48;&#x35;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a> 一起共同討論。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/20/Node-js-的-30-天學習日記-第二十七天/" data-id="cjcnuk2ja000a5gk3jgwbs28y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/20/Node-js-的-30-天學習日記-第二十八天/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Node.js 的 30 天學習日記--第二十八天
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/18/Node-js-的-30-天學習日記-第二十六天/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Node.js 的 30 天學習日記--第二十六天</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/20/Node-js-的-30-天學習日記-第二十八天/">Node.js 的 30 天學習日記--第二十八天</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/20/Node-js-的-30-天學習日記-第二十七天/">Node.js 的 30 天學習日記--第二十七天</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/18/Node-js-的-30-天學習日記-第二十六天/">Node.js 的 30 天學習日記--第二十六天</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/17/Node-js-的-30-天學習日記-第二十五天/">Node.js 的 30 天學習日記--第二十五天</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/16/Node-js-的-30-天學習日記-第二十四天/">Node.js 的 30 天學習日記--第二十四天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/學習日記/" style="font-size: 10px;">學習日記</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

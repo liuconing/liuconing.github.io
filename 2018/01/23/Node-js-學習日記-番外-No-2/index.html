@@ -5,16 +5,22 @@
   
 
   
-  <title>Node.js 學習日記--番外 No.2 | 程式語言學習筆記</title>
+  <title>Node.js 學習日記--番外 No.2 隱藏設定與資料( .env ) | 程式語言學習筆記</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Node.js 學習日記--番外 No.2">
+  <meta name="description" content="如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#112;&amp;#x38;&amp;#x34;&amp;#x30;&amp;#52;&amp;#48;&amp;#53;&amp;#64;&amp;#103;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d; 提醒我錯誤。  dotenv - 環境變數設定這篇使用 No.1 文章的文件載點， dotenv 需要安裝這套件，但文件的 package">
+<meta name="keywords" content="學習日記">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 學習日記--番外 No.2 隱藏設定與資料( .env )">
 <meta property="og:url" content="http://yoursite.com/2018/01/23/Node-js-學習日記-番外-No-2/index.html">
 <meta property="og:site_name" content="程式語言學習筆記">
+<meta property="og:description" content="如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#112;&amp;#x38;&amp;#x34;&amp;#x30;&amp;#52;&amp;#48;&amp;#53;&amp;#64;&amp;#103;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d; 提醒我錯誤。  dotenv - 環境變數設定這篇使用 No.1 文章的文件載點， dotenv 需要安裝這套件，但文件的 package">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2018-01-23T15:58:56.012Z">
+<meta property="og:image" content="https://i.imgur.com/0S5bZMs.jpg">
+<meta property="og:updated_time" content="2018-01-23T21:26:57.462Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node.js 學習日記--番外 No.2">
+<meta name="twitter:title" content="Node.js 學習日記--番外 No.2 隱藏設定與資料( .env )">
+<meta name="twitter:description" content="如果在看的過程中有任何錯誤歡迎寫 E-MAIL： &amp;#x70;&amp;#112;&amp;#x38;&amp;#x34;&amp;#x30;&amp;#52;&amp;#48;&amp;#53;&amp;#64;&amp;#103;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d; 提醒我錯誤。  dotenv - 環境變數設定這篇使用 No.1 文章的文件載點， dotenv 需要安裝這套件，但文件的 package">
+<meta name="twitter:image" content="https://i.imgur.com/0S5bZMs.jpg">
 <link rel="publisher" href="UA-111525900-1">
   
     <link rel="alternate" href="/atom.xml" title="程式語言學習筆記" type="application/atom+xml">
@@ -76,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Node.js 學習日記--番外 No.2
+      Node.js 學習日記--番外 No.2 隱藏設定與資料( .env )
     </h1>
   
 
@@ -84,13 +90,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>如果在看的過程中有任何錯誤歡迎寫 E-MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x70;&#112;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;&#112;&#x38;&#x34;&#x30;&#52;&#48;&#53;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a> 提醒我錯誤。</p>
+</blockquote>
+<h3 id="dotenv-環境變數設定"><a href="#dotenv-環境變數設定" class="headerlink" title="dotenv - 環境變數設定"></a>dotenv - 環境變數設定</h3><p>這篇使用 No.1 文章的文件載點， <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener">dotenv</a> 需要安裝這套件，但文件的 package 已經有資訊了， 到時候需要使用 .env 的環境變數這環境變數在 node.js 上已經有內建了。</p>
+<ol>
+<li><p>在 contact.js 上面開起套件新增一個套件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.Router();</span><br><span class="line"><span class="keyword">var</span> csrf = <span class="built_in">require</span>(<span class="string">'csurf'</span>);</span><br><span class="line"><span class="keyword">var</span> csrfProtection = csrf(&#123; <span class="attr">cookie</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="keyword">var</span> nodeemailer = <span class="built_in">require</span>(<span class="string">'nodemailer'</span>);</span><br><span class="line"><span class="comment">//新增 dotenv</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'dotenv'</span>).config();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在根目錄也就是 email_init 資料夾下面新增一個 .env 檔案，沒有檔名只有副檔名，依照下面這樣寫入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gmailUser = 自己的Email</span><br><span class="line">gmailPass = 自己的Email密碼</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 contact.js 修改一段成下列程式碼</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">'/post'</span>, csrfProtection, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> transport = nodeemailer.createTransport(&#123;</span><br><span class="line">        service:<span class="string">'Gmail'</span>,</span><br><span class="line">        <span class="comment">//寄件者是誰</span></span><br><span class="line">        auth:&#123;</span><br><span class="line">            <span class="comment">//因為這個資料是機密所以不被他人看到所以抓取.env的內容</span></span><br><span class="line">            user: process.env.gmailUser,</span><br><span class="line">            pass: process.env.gmailPass</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>像 .env 檔案並不會上傳到 github 之類的網站，這些網站都會有一個類似 env 的機制， HEROKU 就有一個機制可以保密機密資料。<br><img src="https://i.imgur.com/0S5bZMs.jpg" alt="六角學院擁有"></p>
+</li>
+</ol>
+<hr>
+<h3 id="connect-flash-資料暫存設計"><a href="#connect-flash-資料暫存設計" class="headerlink" title="connect-flash - 資料暫存設計"></a>connect-flash - 資料暫存設計</h3><p>如何比對使用者填寫表單資料格式是否正確，一樣 如果沒有有安裝請先安裝，這邊提供 package 檔案裡有 <a href="https://github.com/jaredhanson/connect-flash" target="_blank" rel="noopener">connect-flash</a> 資訊了。</p>
+<ol>
+<li><p>請先開啟 app.js 檔案並且開啟2個套件且加入一些程式碼，沒有寫上去的資料都不用去動。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flash = <span class="built_in">require</span>(<span class="string">'connect-flash'</span>);</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"><span class="comment">//</span></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  secret: <span class="string">'mysuoercat'</span>,</span><br><span class="line">  resave: <span class="literal">true</span>,</span><br><span class="line">  saveUninitialized: <span class="literal">true</span></span><br><span class="line">&#125;));</span><br><span class="line">app.use(flash());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>開啟 contact.js 新增，新增的內容都寫在註解下面</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/'</span>, csrfProtection, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.render(<span class="string">'contact'</span>,&#123; </span><br><span class="line">        csrfToken: req.csrfToken() ,</span><br><span class="line">        <span class="comment">//設定一個名為 errors 的資料，下面會設定處發後你鍊帶入什麼資訊</span></span><br><span class="line">        errors: req.flash(<span class="string">'errors'</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">router.get(<span class="string">'/review'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.render(<span class="string">'contactReview'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">router.post(<span class="string">'/post'</span>, csrfProtection, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//下判斷</span></span><br><span class="line">    <span class="keyword">if</span>(req.body.username == <span class="string">''</span>)&#123;</span><br><span class="line">        <span class="comment">//如果 username 欄位空值那就會跑出一個 errors 的變數並帶入資料</span></span><br><span class="line">        req.flash(<span class="string">'errors'</span>,<span class="string">'姓名不能為空'</span>);</span><br><span class="line">        <span class="comment">//之後並轉址到 /contact</span></span><br><span class="line">        <span class="keyword">return</span>  res.redirect(<span class="string">'/contact'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> transport = nodeemailer.createTransport(&#123;</span><br><span class="line">        service:<span class="string">'Gmail'</span>,</span><br><span class="line">        auth:&#123;</span><br><span class="line">            user:process.env.gmailUser,</span><br><span class="line">            pass:process.env.gmailPass</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">var</span> mailoptions = &#123;</span><br><span class="line">        form:<span class="string">'"我是帥哥"&lt;liuconing@gmail.com&gt;'</span>,</span><br><span class="line">        to : <span class="string">'pp840405@gmail.com'</span>,</span><br><span class="line">        subject: req.body.username + <span class="string">'寄了一封信'</span>,</span><br><span class="line">        text: req.body.description</span><br><span class="line">    &#125;;</span><br><span class="line">    transport.sendMail(mailoptions,<span class="function"><span class="keyword">function</span>(<span class="params">error,info</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(error)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.log(error);</span><br><span class="line">        &#125;</span><br><span class="line">        res.redirect(<span class="string">'review'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判斷有下好之後網頁並不會顯示 errors 裡面得資料，所以也要到 contact.ejs 去新增。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>聯絡我們<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">%=</span> <span class="attr">errors</span> %&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"username"</span>&gt;</span>姓　　名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">id</span>=<span class="string">"username"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>這套件是建立一個暫存資料的區域，只會占用極小部分記憶體一旦網頁再度重新整理這段資料就會消失，除非在觸發它的程式才會再度啟動。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>基本上 node.js 的一些基礎就到這邊，如果有學到其他東西我會視情況在這分享，有任何問題歡迎寫 MAIL： <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x70;&#x70;&#56;&#52;&#x30;&#x34;&#x30;&#53;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x70;&#x70;&#56;&#52;&#x30;&#x34;&#x30;&#53;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a> 一起共同討論。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/23/Node-js-學習日記-番外-No-2/" data-id="cjcrxvsus0000vsk3ts4i6k7y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/23/Node-js-學習日記-番外-No-2/" data-id="cjcs5impz0000agk3slym2jww" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/學習日記/">學習日記</a></li></ul>
+
     </footer>
   </div>
   
@@ -100,7 +140,7 @@
   
     <a href="/2018/01/23/Node.js 學習日記--番外 No.1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Node.js 學習日記--番外 No.1</div>
+      <div class="article-nav-title">Node.js 學習日記--番外 No.1 電子郵件發送功能</div>
     </a>
   
 </nav>
@@ -119,11 +159,11 @@
       <ul>
         
           <li>
-            <a href="/2018/01/23/Node-js-學習日記-番外-No-2/">Node.js 學習日記--番外 No.2</a>
+            <a href="/2018/01/23/Node-js-學習日記-番外-No-2/">Node.js 學習日記--番外 No.2 隱藏設定與資料( .env )</a>
           </li>
         
           <li>
-            <a href="/2018/01/23/Node.js 學習日記--番外 No.1/">Node.js 學習日記--番外 No.1</a>
+            <a href="/2018/01/23/Node.js 學習日記--番外 No.1/">Node.js 學習日記--番外 No.1 電子郵件發送功能</a>
           </li>
         
           <li>
